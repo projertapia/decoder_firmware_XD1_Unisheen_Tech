@@ -1,0 +1,71 @@
+﻿<!--
+ * @Author: iplusss@qq.com
+ * @Date: 2022-12-14 15:30:33
+ * @LastEditTime: 2022-12-16 14:47:32
+ * @LastEditors: iplusss
+ * @Description: 
+ * Copyright (c) 2022—2052 iplusss All rights reserved.
+-->
+<!DOCTYPE html>
+<html>
+<head>
+	<title>pwd</title>
+	<link rel="stylesheet" type="text/css" href="../css/iframe_subpage.css">
+	<link rel="stylesheet" type="text/css" href="../css/iframe/remserial.css">
+    <script type="text/javascript" src="../js/jquery-1.6.2.min.js"></script>
+    <script type="text/javascript" src="../js/jquery.i18n.properties-min-1.0.9.js"></script>
+    <script type="text/javascript" src="../js/ui.js"></script>
+    <script type="text/javascript" src="../js/subpage_intercept_f5.js"></script>
+    <script type="text/javascript" src="../js/iframe/remserial.js"></script>
+</head>
+<body>
+	<div id="main_content">
+		<div class="content_box">
+			<div class="content_box_header">
+				<span id="header_text"></span>
+			</div>
+			<div class="content">
+                <div>
+			        <span id="remserial_mode_txt" class="small_title"></span>
+			        <select id="remserial_mode" name="remserial_mode" onchange="remserial_mode_change();">
+			        	<option id="remserial_mode_server_txt" value="server"></option>
+			        	<option id="remserial_mode_client_txt" value="client"></option>
+			        </select>
+			    </div>
+                <div>
+			        <span id="remserial_baud_txt" class="small_title"></span>
+			        <select id="remserial_baud" name="remserial_baud">
+			        	<option value="300">300</option>
+                        <option value="600">600</option>
+                        <option value="1200">1200</option>
+                        <option value="2400">2400</option>
+                        <option value="4800">4800</option>
+                        <option value="9600">9600</option>
+                        <option value="19200">19200</option>
+                        <option value="38400">38400</option>
+                        <option value="43000">43000</option>
+                        <option value="56000">56000</option>
+                        <option value="57600">57600</option>
+                        <option value="115200">115200</option>
+			        </select>
+			    </div>
+                <div>
+			        <span id="remserial_ip_txt" class="small_title"></span>
+			        <input id="remserial_ip" maxlength='512' type='text' />
+			        <img src="../images/Error.png" alt="error" class="hint_image display_off" id="remserial_ip_hint_image"/>
+			    </div>
+                <div>
+			        <span id="remserial_port_txt" class="small_title"></span>
+			        <input id="remserial_port" maxlength='512' type='text' />
+			        <img src="../images/Error.png" alt="error" class="hint_image display_off" id="remserial_port_hint_image"/>
+			    </div>
+			    <div>
+					<span id="" class="small_title"></span>
+			        <input id="remserial_setting" type="button" value="setting" class="input_button" onclick="remserial_setting()" />
+			    </div>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>

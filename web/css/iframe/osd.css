@@ -1,0 +1,149 @@
+#osd_setting {
+	margin-left: 124px;
+}
+.content{
+	padding: 20px;
+}
+.content .hint_image {
+	width: 15px;
+	height: 15px;
+	vertical-align: -2px;
+	margin-left: 10px;
+}
+.content .hint_text {
+	margin-left: 5px;
+	font-size: 13px;
+}
+.content .subtitle {
+	margin:0 auto;
+}
+
+.content .small_title{
+	width: 130px;
+}
+
+.content .osd_setting_subtitle {
+	font-size: 16px;
+	width: 150px;
+	color: rgb(34, 34, 34);
+	font-weight: bold;
+}
+hr {
+	background-color: rgb(186, 185, 185);
+	height: 1px;
+	border: none;
+	width: 100%;
+	margin: 20px auto;
+}
+.osd_region_logo{
+	width: 100px;
+	height: 100px;
+	cursor: pointer;
+}
+
+#update_logo_block{
+	width: 600px;
+	height: 200px;
+	background-color: white;
+	position: fixed;
+	border: 1px solid rgb(204, 204, 204);
+	border-radius: 4px;
+}
+
+#update_logo_block div {
+	margin: 15px 50px;
+}
+#update_logo_block span{
+	color: rgb(85, 85, 85);
+	display: inline-block;
+	font-size: 13px;
+}
+#update_logo_block .small_title {
+	font-size: 14px;
+	font-weight: 700;
+	width: 120px;
+	text-align: right;
+}
+
+#update_logo_block .display_off{
+	display: none;
+}
+
+.display_off {
+	display: none;
+}
+
+.input_button {
+	width: 60px;
+	height: 25px;
+	background: url("../images/bg-button-green.gif") repeat-x left top rgb(40, 93, 199) !important;
+	border: 0px;
+	font-size: 14px;
+	font-weight: bold;
+	color: white;
+	cursor: pointer;
+}
+
+#update_logo_block #logo_update_header{
+	text-align: center;
+}
+
+#update_txt {
+	width: 300px;
+}
+.warning {
+	vertical-align: top;
+}
+#progress_bar {
+	border: 1px solid rgb(99,168,0);
+	width: 184px;
+	height: 15px;
+	margin: 0;
+	vertical-align: -2px;
+}
+#progress {
+	width: 0px;
+	height: 100%;
+	background-color: rgb(99,168,0);
+	margin: 0;
+}
+#progress_text {
+	width: 35px;
+	text-align: center;
+	color: rgb(85, 85, 85);
+}
+#update_version {
+	text-align: left;
+}
+#filename {
+	width: 154px;
+}
+#scan_button{
+	width: 61px;
+}
+.content .logo_preview_text{
+	vertical-align: top;
+}
+.content .color-box{
+	border: 1px solid rgb(112, 112, 112);
+	width: 70px;
+	background-color: #000000;
+	cursor: pointer;
+	
+}
+#update_logo_block #update_logo_block_close{
+	margin: 0;
+	text-align: right;
+}
+
+#update_logo_close{
+	width: 15px;
+	height: 15px;
+	margin-right: 5px;
+	margin-top: 5px;
+	cursor: pointer;
+}
+
+#warning{
+	vertical-align: top;
+}

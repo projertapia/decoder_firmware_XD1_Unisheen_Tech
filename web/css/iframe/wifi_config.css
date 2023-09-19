@@ -1,0 +1,46 @@
+#wifi_config_button {
+	margin-left: 124px;
+}
+.content{
+	padding: 20px;
+}
+.content .hint_image {
+	width: 15px;
+	height: 15px;
+	vertical-align: -2px;
+	margin-left: 10px;
+}
+.content .hint_text {
+	margin-left: 5px;
+	font-size: 13px;
+}
+.content .display_off {
+	display: none;
+}
+
+.content .subtitle {
+	margin:0 auto;
+}
+.content .wifi_subtitle {
+	font-size: 16px;
+	width: 150px;
+	color: rgb(34, 34, 34);
+	font-weight: bold;
+}
+hr {
+	background-color: rgb(186, 185, 185);
+	height: 1px;
+	border: none;
+	width: 100%;
+	margin: 20px auto;
+}
+#wifi_exist{
+	margin: 0;
+}
+#wifi_list_hint_image{
+	width: 25px;
+	height:25px;
+	vertical-align: -8px;
+	cursor: pointer;
+}
+

@@ -1,0 +1,26 @@
+#system_setting {
+	margin-left: 124px;
+}
+
+.dividing_rule{
+	width: 250px;
+	height: 20px;
+	background-image: url("../../images/dividing_backgroud.png");
+}
+.rule_pointer{
+	width: 10px;
+	height: 20px;
+	background-color: rgb(40, 93, 199);
+	vertical-align: -5px;
+}
+.number{
+	width: 20px;
+	height: 20px;
+}
+.display_off{
+	display: none;
+}
+#vo_source{
+	vertical-align: -2px;
+	margin-left: 15px;
+}

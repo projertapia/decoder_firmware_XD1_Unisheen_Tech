@@ -1,0 +1,37 @@
+#!/bin/sh
+
+export PATH=/usr/sbin/:$PATH:
+export LD_LIBRARY_PATH=/tmp:$LD_LIBRARY_PATH:
+export LD_LIBRARY_PATH=/tmp/nginx/sbin:$LD_LIBRARY_PATH:
+export LD_LIBRARY_PATH=/lib_3:$LD_LIBRARY_PATH:
+
+cd /tmp/
+chmod 777 web/images/*
+chmod 777 web/css/*
+chmod 777 web/js/*
+chmod 777 web/*
+chmod 777 *
+
+insmod /tmp/ko/88x2xx.ko
+#insmod /tmp/ko/88x2cu.ko
+#insmod /tmp/ko/88x2bu.ko
+
+
+cd /tmp/
+
+chmod 777 /tmp/nginx/sbin/nginx
+chmod 777 box.d4
+chmod 777 reset
+
+ifconfig lo up
+/tmp/nginx/sbin/nginx -p /tmp/nginx/
+
+
+cp -f /tmp/passwd /customer/
+
+./reset &
+
+while true
+do
+./box.d4_uni
+done

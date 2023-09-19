@@ -1,0 +1,14 @@
+#reload {
+	width: 15px;
+	height: 15px;
+	vertical-align: -3px;
+	margin-left: 10px;
+}
+#reboot_reload_text {
+	text-align: left;
+	font-size: 13px;
+	font-weight: normal;
+}
+.content .display_off {
+	display: none;
+}

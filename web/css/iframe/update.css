@@ -1,0 +1,53 @@
+#update_txt {
+	width: 500px;
+}
+.warning {
+	vertical-align: top;
+}
+#progress_bar {
+	border: 1px solid rgb(102, 153, 255);
+	width: 184px;
+	height: 15px;
+	margin: 0;
+	vertical-align: -2px;
+}
+#progress {
+	width: 0px;
+	height: 100%;
+	background-color: rgb(102, 153, 255);
+	margin: 0;
+}
+#progress_text {
+	width: 35px;
+	text-align: center;
+	color: rgb(85, 85, 85);
+}
+#update_version {
+	text-align: left;
+}
+#filename {
+	width: 154px;
+}
+#scan_button{
+	width: 61px;
+}
+.content .display_off {
+	display: none;
+}
+#update_image {
+	width: 18px;
+	height: 18px;
+	vertical-align: -3px;
+	margin-left: 10px;
+}
+
+.large_button {
+	width: 120px;
+	height: 30px;
+	background: url("../images/bg-button-green.gif") repeat-x left top rgb(40, 93, 199) !important;
+	border: 0px;
+	font-size: 14px;
+	font-weight: bold;
+	color: white;
+	cursor: pointer;
+}

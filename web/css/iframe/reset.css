@@ -1,0 +1,11 @@
+#reload {
+	width: 15px;
+	height: 15px;
+	vertical-align: -3px;
+	margin-left: 10px;
+}
+#reset_reload_text {
+}
+.content .display_off {
+	display: none;
+}

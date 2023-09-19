@@ -1,0 +1,139 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+	<title>network</title>
+	<link rel="stylesheet" type="text/css" href="../css/iframe_subpage.css">
+	<link rel="stylesheet" type="text/css" href="../css/iframe/network.css">
+    <script type="text/javascript" src="../js/jquery-1.6.2.min.js"></script>
+    <script type="text/javascript" src="../js/jquery.i18n.properties-min-1.0.9.js"></script>
+    <script type="text/javascript" src="../js/ui.js"></script>
+    <script type="text/javascript" src="../js/subpage_intercept_f5.js"></script>
+    <script type="text/javascript" src="../js/iframe/network.js"></script>
+</head>
+<body> 
+	<div id="main_content">
+		<div class="content_box">
+			<div class="content_box_header">
+				<span id="header_text"></span>
+			</div>
+			<div class="content">
+				<div class="subtitle">
+		            <span id="network_interface_txt" class="network_subtitle"></span>
+		        </div>
+				<div>
+			        <span id="network_dhcp_txt" class="small_title"></span>
+			        <select id="network_dhcp" name="network_dhcp" onchange="network_dhcp_change();">
+			        	<option id="network_dhcp_off_txt" value="0"></option>
+			        	<option id="network_dhcp_on_txt" value="1"></option>
+			        </select>
+			    </div>
+			    <div>
+			        <span id="network_ip_txt" class="small_title"></span>
+			        <input id="network_ip" maxlength='512' type='text' />
+			        <img src="../images/Error.png" alt="error" class="hint_image display_off" id="ip_hint_image"/>
+			        <span class="hint_text display_off" id="ip_hint_text"></span>
+			    </div>
+			    <div>
+			        <span id="network_netmask_txt" class="small_title"></span>
+			        <input id="network_netmask" maxlength='512' type='text' />
+			        <img src="../images/Error.png" alt="error" class="hint_image display_off" id="netmask_hint_image"/>
+			        <span class="hint_text display_off" id="netmask_hint_text"></span>
+			    </div>
+			    <div>
+			        <span id="network_gateway_txt" class="small_title"></span>
+			        <input id="network_gateway" maxlength='512' type='text' />
+			        <img src="../images/Error.png" alt="error" class="hint_image display_off" id="gateway_hint_image"/>
+			        <span class="hint_text display_off" id="gateway_hint_text"></span>
+			    </div>
+			    <div>
+			        <span id="network_mac_txt" class="small_title"></span>
+			        <input id="network_mac" maxlength='512' type='text' />
+			        <img src="../images/Error.png" alt="error" class="hint_image display_off" id="mac_hint_image"/>
+			        <span class="hint_text display_off" id="mac_hint_text"></span>
+			    </div>
+				<hr />
+				<div class="subtitle">
+		            <span id="network_dns_setting_txt" class="network_subtitle"></span>
+		        </div>
+			    <div>
+			        <span id="network_dns0_txt" class="small_title"></span>
+			        <input id="network_dns0" maxlength='512' type='text' />
+			        <img src="../images/Error.png" alt="error" class="hint_image display_off" id="dns0_hint_image"/>
+			        <span class="hint_text display_off" id="dns0_hint_text"></span>
+			    </div>
+			    <div>
+			        <span id="network_dns1_txt" class="small_title"></span>
+			        <input id="network_dns1" maxlength='512' type='text' />
+			        <img src="../images/Error.png" alt="error" class="hint_image display_off" id="dns1_hint_image"/>
+			        <span class="hint_text display_off" id="dns1_hint_text"></span>
+			    </div>
+                <hr />
+				<div class="subtitle">
+		            <span id="network_ntp_setting_txt" class="network_subtitle"></span>
+		        </div>
+			    <div>
+			        <span id="network_ntp_enable_txt" class="small_title"></span>
+			        <select id="network_ntp_enable" name="network_ntp_enable">
+			        	<option id="network_ntp_enable_off_txt" value="0"></option>
+			        	<option id="network_ntp_enable_on_txt" value="1"></option>
+			        </select>
+			    </div>
+			    <div>
+			        <span id="network_ntp_server_txt" class="small_title"></span>
+			        <input id="network_ntp_server" maxlength='512' type='text' />
+                    <img src="../images/Error.png" alt="error" class="hint_image display_off" id="ntp_server_hint_image"/>
+			        <span class="hint_text display_off" id="ntp_server_hint_text"></span>
+			    </div>
+                <div>
+			        <span id="network_ntp_timezone_txt" class="small_title"></span>
+			        <select id="network_ntp_timezone" name="network_ntp_timezone">
+			        	<option value="-12">UTC-12</option>
+                        <option value="-11">UTC-11</option>
+                        <option value="-10">UTC-10</option>
+                        <option value="-9">UTC-9</option>
+                        <option value="-8">UTC-8</option>
+                        <option value="-7">UTC-7</option>
+                        <option value="-6">UTC-6</option>
+                        <option value="-5">UTC-5</option>
+                        <option value="-4">UTC-4</option>
+                        <option value="-3">UTC-3</option>
+                        <option value="-2">UTC-2</option>
+                        <option value="-1">UTC-1</option>
+                        <option value="0" selected="selected">UTC</option>
+                        <option value="1">UTC+1</option>
+                        <option value="2">UTC+2</option>
+                        <option value="3">UTC+3</option>
+                        <option value="330">UTC+3.5</option>
+                        <option value="4">UTC+4</option>
+                        <option value="5">UTC+5</option>
+                        <option value="530">UTC+5.5</option>
+                        <option value="6">UTC+6</option>
+                        <option value="7">UTC+7</option>
+                        <option value="8">UTC+8</option>
+                        <option value="9">UTC+9</option>
+                        <option value="10">UTC+10</option>
+                        <option value="11">UTC+11</option>
+                        <option value="12">UTC+12</option>
+			        </select>
+			    </div>
+                <hr />
+                <div class="subtitle">
+		            <span id="network_port_setting_txt" class="network_subtitle"></span>
+		        </div>
+			    <div>
+			        <span id="network_webport_txt" class="small_title"></span>
+			        <input id="network_webport" maxlength='512' type='text' />
+			        <img src="../images/Error.png" alt="error" class="hint_image display_off" id="webport_hint_image"/>
+			        <span class="hint_text display_off" id="webport_hint_text"></span>
+			    </div>
+			    <div>
+					<span id="" class="small_title"></span>
+			        <input id="network_setting" type="button" value="setting" class="input_button" onclick="network_setting()">
+			    </div>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>

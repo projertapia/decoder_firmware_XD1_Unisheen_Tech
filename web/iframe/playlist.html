@@ -1,0 +1,186 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+	<title>playlist</title>
+	<link rel="stylesheet" type="text/css" href="../css/iframe_subpage.css">
+	<link rel="stylesheet" type="text/css" href="../css/iframe/playlist.css">
+	<script type="text/javascript" src="../js/jquery-1.6.2.min.js"></script>
+	<script type="text/javascript" src="../js/jquery.i18n.properties-min-1.0.9.js"></script>
+	<script type="text/javascript" src="../js/ui.js"></script>
+	<script type="text/javascript" src="../js/subpage_intercept_f5.js"></script>
+	<script type="text/javascript" src="../js/iframe/playlist.js"></script>
+	<script type="text/javascript" src="../js/clipboard.min.js"></script>
+</head>
+
+<body>
+	<div id="main_content">
+		<div class="content_box">
+			<div class="content_box_header">
+				<span id="header_text"></span>
+			</div>
+			<div class="content">
+				<div>
+					<span id="playlist_wndnum" class="small_title"></span>
+					<select id="wnd" name="wnd" onChange="parentpage_adjust_height()">
+						<script type="text/javascript">
+							var wndtmp = Math.sqrt(max_wnd);
+							for (var i = 0; i < wndtmp; i++) {
+								var tmp = (i + 1) * (i + 1);
+								document.writeln("<option value=" + tmp + ">" + tmp + "</option>");
+							}
+						</script>
+					</select>
+				</div>
+				<hr />
+				<script type="text/javascript">
+					for (var i = 0; i < max_wnd; i++) {						
+						document.writeln("<div id='div_type" + i + "' style='display:none;'>");
+						document.writeln("<span id='playlist_type" + i + "' class='small_title'></span>");//播放类型
+						document.writeln("<select id='playlist_type_select" + i + "' name='playlist_type_select'" + i + " onchange='change_playtype("+i+")'>");
+						document.writeln("</select>");
+						document.writeln("</div>");						
+						document.writeln("<div id='div" + i + "'>");
+						document.writeln("<span id='playlist_url" + i + "' class='small_title'></span>");//地址
+						document.writeln("<input id='uri" + i + "' maxlength='1024' type='text' class='uri_input'/>");
+						document.writeln("<select id='playlist_file_select" + i + "' name='playlist_file_select'" + i + " class='uri_input'>");			
+						document.writeln("</select>");
+						document.writeln("</div>"); 
+                     	document.writeln("<div id='div_cache" + i + "'>");
+						document.writeln("<span id='playlist_cache" + i + "'  class='small_title'></span>");//缓存
+						document.writeln("<input id='cache" + i + "' maxlength='4' type='text' class='cache_input'/><span>&nbsp;[0-4000]</span>");
+                        document.writeln("</div>");	
+						document.writeln("<div id='div_audio" + i + "'>");
+						document.writeln("<span id='playlist_audio" + i + "' class='small_title'></span>");//音频						
+						document.writeln("<select id='uri_audio_" + i + "' name='audioselect' onchange='change_audio("+i+")'>");
+						document.writeln("</select>");
+						document.writeln("</div>");
+						document.writeln("<div id='div_record" + i + "'>");
+						document.writeln("<span id='playlist_record" + i + "' class='small_title'></span>");
+						document.writeln("<input type='checkbox' id='record" + i + "' name='record'" + i + "/>");
+						document.writeln("<span id='playlist_recordtime" + i + "'></span>");
+						document.writeln("<input id='recordtime" + i + "' maxlength='4' type='text' class='cache_input'/><span id='recordtime_value" + i + "'>[0-4000]</span>&nbsp;&nbsp;");
+                        document.writeln("</div>");
+						document.writeln("<input type='button' id='full_btn_" + i + "'  value='setting' class='input_button' onclick='click_full_btn(" + i + ")'/>");//设置按钮
+						document.writeln("<div id='div_playlist" + i + "'>");
+						document.writeln("<span id='playlist_pid" + i + "' class='small_title'></span>");//节目
+						document.writeln("<select id='playlist_pid_select" + i + "' name='playlist_pid_select'" + i + ">");
+						document.writeln("</select>");
+						document.writeln("</div>");
+						document.writeln("<hr id='line_" + i + "' />");
+						
+					}
+				</script>
+				<div>
+				    <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+					<input id="playlist_setting" type="button" value="setting" class="input_button"onclick="playlist_setting()">
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<input id="full_btn_1000" type="button" value="setting" class="input_button" onclick="click_full_btn(1000)">
+				</div>
+				<div>
+					<span id="playlist_config_discription" class='small_title'></span>
+				<span id="playlist_config_discription_txt"> <span id="playlist_config_discription_txt_per_1"></span>
+						<br />
+						http://username:password@192.168.1.168/0.ts
+						<br />
+						http://username:password@192.168.1.168/0.flv
+						<br />
+						http://username:password@192.168.1.168/0.m3u8
+						<br />
+						rtsp://username:password@192.168.1.168/0&nbsp;&nbsp;&nbsp;&nbsp;(rtsp over tcp)
+						<br />
+						rtsp://username:password@192.168.1.168/0?udp&nbsp;&nbsp;&nbsp;&nbsp;(rtsp over udp)
+						<br />
+						rtmp://username:password@192.168.1.168/live/0
+						<br />
+						rtmps://username:password@192.168.1.168/live/0
+						<br />
+						udp://username:password@238.0.0.1:1234
+						<br />
+						<br />
+						<span id="playlist_config_discription_txt_per_2"></span>
+						<br />
+						srt://0.0.0.0:9000?mode=listener&smoother=live&pbkeylen=16&passphrase=password
+						<br />
+						<br />
+						<span id="playlist_config_discription_txt_per_2_2"></span>
+						<br />
+						srt://192.168.1.168:9000?smoother=live&pbkeylen=16&passphrase=password
+						<br />
+						<br />
+						<span id="playlist_config_discription_txt_per_3"></span> </span>
+				</div>
+			</div>
+		</div>
+		<div class="content_box" id="content_box_onvif">
+			<div class="content_box_header">
+				<span id="header_onvif"></span>
+			</div>
+			<div class="content" id="onviftext">
+				<div id="onviflist_div">
+					<span id="playlist_onviflist" class="small_title"></span>
+				</div>
+				<div>
+					<span id="playlist_onvifdivce" class="small_title"></span>
+					<input type="text" id="onvifdivce" />
+				</div>
+				<div id="username_div">
+					<span id="playlist_username" class="small_title"></span>
+					<input type="text" id="username_text" />
+				</div>
+				<div id="password_div">
+					<span id="playlist_password" class="small_title"></span>
+					<input type="text" id="password_text" />
+				</div>
+				<div id="get_btu_url_div">
+				    <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+					<input id="playlist_get_btu_url" type="button" class="input_button" onclick="getrtspurl()">
+				</div>
+				<div id="rtsp_url_div">
+					<span id="playlist_rtsp_url" class="small_title">RTSP URL：</span>
+					<span id="rtsp_url_text"></span>
+				</div>
+				<div id="rtsp_explain_div">
+					<span id="playlist_config_discription_rtsp" class='small_title'></span>
+					<span id="playlist_rtsp_explain"></span>
+				</div>
+			</div>
+		</div>
+		<div class="content_box" id="content_box_sap">
+			<div class="content_box_header">
+				<span id="header_sap"></span>
+			</div>
+			<div class="content" id="saptext">
+				<div id="saplist_div">
+					<span id="playlist_saplist" class="small_title"></span>
+				</div>
+				<div id="sap_sap_div" hidden>
+					<span id="playlist_sap_url" class="small_title">SAP URL：</span>
+					<span id="sap_url_text"></span>
+				</div>
+				<div id="sap_sap_div_discription" hidden>
+					<span id="playlist_config_discription_sap" class='small_title'>A</span>
+					<span id="playlist_sap_explain">B</span>
+				</div>
+			</div>
+		</div>
+		<div class="content_box" id="content_box_ndi" hidden>
+			<div class="content_box_header">
+			<span id="header_ndi"></span>
+			</div>
+			<div class="content">
+				<div id="ndilist_div">
+				<span id="playlist_ndilist" class="small_title"></span>
+				</div>
+				<div id="ndi_explain_div">
+					<span id="playlist_config_discription_ndi" class='small_title'></span>
+					<span id="playlist_ndi_explain"></span>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="uri_scan" style="display: none;"></div>
+	<button id="clipboard" style="display: none;"></button>
+</body>
+
+</html>

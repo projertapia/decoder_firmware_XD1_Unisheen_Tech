@@ -1,0 +1,31 @@
+#factory_setting {
+	margin-left: 124px;
+}
+
+.dividing_rule{
+	width: 250px;
+	height: 20px;
+	background-image: url("../../images/dividing_backgroud.png");
+}
+
+.display_off{
+	display: none;
+}
+
+.content .hint_image {
+	width: 15px;
+	height: 15px;
+	vertical-align: -2px;
+	margin-left: 10px;
+}
+.content .hint_text {
+	margin-left: 5px;
+	font-size: 13px;
+}
+
+.content .small_title {
+	font-size: 14px;
+	font-weight: 700;
+	width: 180px;
+	text-align: right;
+}

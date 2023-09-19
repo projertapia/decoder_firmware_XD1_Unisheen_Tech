@@ -1,0 +1,55 @@
+﻿<!--
+ * @Author: iplusss@qq.com
+ * @Date: 2022-12-14 15:30:33
+ * @LastEditTime: 2022-12-16 14:43:36
+ * @LastEditors: iplusss
+ * @Description: 
+ * Copyright (c) 2022—2052 iplusss All rights reserved.
+-->
+<!DOCTYPE html>
+<html>
+<head>
+	<title>pwd</title>
+	<link rel="stylesheet" type="text/css" href="../css/iframe_subpage.css">
+	<link rel="stylesheet" type="text/css" href="../css/iframe/pwd.css">
+    <script type="text/javascript" src="../js/jquery-1.6.2.min.js"></script>
+    <script type="text/javascript" src="../js/jquery.i18n.properties-min-1.0.9.js"></script>
+    <script type="text/javascript" src="../js/ui.js"></script>
+    <script type="text/javascript" src="../js/subpage_intercept_f5.js"></script>
+    <script type="text/javascript" src="../js/iframe/pwd.js"></script>
+</head>
+<body>
+	<div id="main_content">
+		<div class="content_box">
+			<div class="content_box_header">
+				<span id="header_text"></span>
+			</div>
+			<div class="content">
+			    <div>
+			        <span id="pwd_old_txt" class="small_title"></span>
+			        <input id="pwd_old" maxlength='512' type='text' />
+			        <img src="../images/Error.png" alt="error" class="hint_image display_off" id="pwd_old_hint_image"/>
+			        <span class="hint_text display_off" id="pwd_old_hint_text"></span>
+			    </div>
+			    <div>
+			        <span id="pwd_new_txt0" class="small_title"></span>
+			        <input id="pwd_new0" maxlength='512' type='text' />
+			        <img src="../images/Error.png" alt="error" class="hint_image display_off" id="pwd_new0_hint_image"/>
+			        <span class="hint_text display_off" id="pwd_new0_hint_text"></span>
+			    </div>
+			    <div>
+			        <span id="pwd_new_txt1" class="small_title"></span>
+			        <input id="pwd_new1" maxlength='512' type='text' />
+			        <img src="../images/Error.png" alt="error" class="hint_image display_off" id="pwd_new1_hint_image"/>
+			        <span class="hint_text display_off" id="pwd_new1_hint_text"></span>
+			    </div>
+			    <div>
+					<span id="" class="small_title"></span>
+			        <input id="pwd_setting" type="button" value="setting" class="input_button" onclick="pwd_setting()" disabled="disabled"/>
+			    </div>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>

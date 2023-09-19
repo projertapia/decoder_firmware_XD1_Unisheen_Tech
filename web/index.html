@@ -1,0 +1,86 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="css/index.css">
+	<script type="text/javascript" src="js/jquery-1.6.2.min.js"></script>
+	<script type="text/javascript" src="js/jquery.cookie.js"></script>
+	<script type="text/javascript" src="js/jquery.i18n.properties-min-1.0.9.js"></script>
+	<script type="text/javascript" src="js/ui.js"></script>
+    <script type="text/javascript" src="js/parentpage_intercept_f5.js"></script>
+	<script type="text/javascript" src="js/index.js"></script>
+</head>
+<body>
+	<div id="left">
+		<div id="backgroud_image_need">
+			<img id="logo" src="images/logo.png" border="0" alt="logo">
+			<ul id="main_nav">
+				<li class="main_nav_li">
+					<span id="index_status" class="nav_item" onclick="main_iframe_change('iframe/status.html')" style="padding-right: 25px;"></span>
+				</li>
+				<li class="main_nav_li">
+					<span id="index_playlist" class="nav_item" onclick="main_iframe_change('iframe/playlist.html')"></span>
+				</li>
+
+                <li class="main_nav_li">
+					<span id="index_advance" class="nav_item" value="have_secondary_nav"></span>
+					<ul class="secondary_nav display_off" value="off">
+                        <li>
+							<span id="index_chnlayout" onclick="main_iframe_change('iframe/chnlayout.html')"></span>
+						</li>
+						<li>
+							<span id="index_osdsetup" onclick="main_iframe_change('iframe/osd.html')"></span>
+						</li>
+                    </ul>
+                </li>
+                
+				<li class="main_nav_li">
+					<span id="index_system" class="nav_item" value="have_secondary_nav"></span>
+					<ul class="secondary_nav display_off" value="off">
+						<li>
+							<span id="index_network" onclick="main_iframe_change('iframe/network.html')"></span>
+						</li>
+						<li id="wifi_option" class="">
+							<span id="index_wifi" onclick="main_iframe_change('iframe/wifi_config.html')"></span>
+						</li>
+                   <!--     <li>
+							<span id="index_remserial" onclick="main_iframe_change('iframe/remserial.html')"></span>
+						</li>  -->
+						<li>
+							<span id="index_pwd" onclick="main_iframe_change('iframe/pwd.html')"></span>
+						</li>
+						<li>
+							<span id="index_systemout" onclick="main_iframe_change('iframe/system.html')"></span>
+						</li>
+						<li>
+							<span id="index_update" onclick="main_iframe_change('iframe/update.html')"></span>
+						</li>
+						<li>
+							<span id="index_reset" onclick="main_iframe_change('iframe/reset.html')"></span>
+						</li>
+						<li>
+							<span id="index_reboot" onclick="main_iframe_change('iframe/reboot.html')"></span>
+						</li>
+                        <li>
+							<span id="index_restart" onclick="main_iframe_change('iframe/restart.html')"></span>
+						</li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div id="right">
+		<div id="language">
+			<span id="index_language"></span>
+			<select id='LanSle' onchange="change_event_handle()">
+				<option value="Chinese">中文</option>
+				<option value="English">English</option>
+			</select>
+		</div>
+		<iframe src="" scrolling="auto" id="subframe"></iframe>
+	</div>
+</body>
+
+</html>

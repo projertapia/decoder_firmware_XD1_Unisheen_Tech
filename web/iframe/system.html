@@ -1,0 +1,90 @@
+﻿<!--
+ * @Author: iplusss@qq.com
+ * @Date: 2022-12-14 15:30:33
+ * @LastEditTime: 2022-12-15 15:25:12
+ * @LastEditors: iplusss
+ * @Description: 
+ * Copyright (c) 2022—2052 iplusss All rights reserved.
+-->
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>system</title>
+	<link rel="stylesheet" type="text/css" href="../css/iframe_subpage.css">
+	<link rel="stylesheet" type="text/css" href="../css/iframe/system.css">
+    <script type="text/javascript" src="../js/jquery-1.6.2.min.js"></script>
+    <script type="text/javascript" src="../js/jquery.i18n.properties-min-1.0.9.js"></script>
+    <script type="text/javascript" src="../js/ui.js"></script>
+    <script type="text/javascript" src="../js/subpage_intercept_f5.js"></script>
+    <script type="text/javascript" src="../js/iframe/system.js"></script>
+</head>
+<body>
+	<div id="main_content" class="display_off1">
+		<div class="content_box">
+			<div class="content_box_header">
+				<span id="header_text"></span>
+			</div>
+			<div class="content">
+			    <div>
+			        <span id="system_vo_txt" class="small_title"></span>
+			        <select id="vo" name="vo">
+			            <option value="480P60">480P60</option>
+			            <option value="576P50">576P50</option>
+			            <option value="720P50">720P50</option>
+			            <option value="720P60">720P60</option>
+			            <option value="1080P25">1080P25</option>
+			            <option value="1080P30">1080P30</option>
+			            <option value="1080P50">1080P50</option>
+						<option value="1080P60">1080P60</option>
+						
+			        </select>
+			    </div>
+			    <div>
+			        <span id="system_luma_txt" class="small_title"></span>
+			        <span id="system_luma_dividing_rule" class="dividing_rule">
+			        	<span class="rule_pointer"></span>
+			        </span>
+			        <span id="system_luma" class="number">0</span>
+			    </div>
+			    <div>
+			        <span id="system_contrast_txt" class="small_title"></span>
+			        <span id="system_contrast_dividing_rule" class="dividing_rule">
+			        	<span class="rule_pointer"></span>
+			        </span>
+			        <span id="system_contrast" class="number">0</span>
+			    </div>
+			    <div>
+			        <span id="system_hue_txt" class="small_title"></span>
+			        <span id="system_hue_dividing_rule" class="dividing_rule">
+			        	<span class="rule_pointer"></span>
+			        </span>
+			        <span id="system_hue" class="number">0</span>
+			    </div>
+			    <div>
+			        <span id="system_saturation_txt" class="small_title"></span>
+			        <span id="system_saturation_dividing_rule" class="dividing_rule">
+			        	<span class="rule_pointer"></span>
+			        </span>
+			        <span id="system_saturation" class="number">0</span>
+			    </div>
+				
+				 <div>
+			        <span id="system_ao_volume_txt" class="small_title"></span>
+			        <span id="system_ao_volume_dividing_rule" class="dividing_rule">
+			        	<span class="rule_pointer"></span>
+			        </span>
+			        <span id="system_ao_volume" class="number">0</span>
+			    </div>
+				
+			    <div>
+					<span id="" class="small_title"></span>
+					<input id="system_default" type="button" value="setting" class="input_button" onclick="system_default()">
+					<input id="system_setting" type="button" value="setting" class="input_button" onclick="system_setting()">
+			    </div>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>

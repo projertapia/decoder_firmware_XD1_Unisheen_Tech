@@ -1,0 +1,385 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+	<title>network</title>
+	<link rel="stylesheet" type="text/css" href="../css/iframe_subpage.css">
+	<link rel="stylesheet" type="text/css" href="../css/iframe/osd.css">
+	<link rel="stylesheet" type="text/css" href="../css/colpick.css"/>
+	<script type="text/javascript" src="../js/jquery-1.10.0.min.js"></script>
+    <script type="text/javascript" src="../js/jquery.i18n.properties-min-1.0.9.js"></script>
+    <script type="text/javascript" src="../js/ajaxfileupload.js"></script>
+    <script type="text/javascript" src="../js/ui.js"></script>
+    <script type="text/javascript" src="../js/subpage_intercept_f5.js"></script>
+	<script type="text/javascript" src="../js/colpick.js"></script>
+    <script type="text/javascript" src="../js/iframe/osd.js"></script>
+</head>
+<body>
+	<div id="update_logo_block" class="display_off">
+		<div id="update_logo_block_close">
+			<img src="../images/Error.png" alt="error" id="update_logo_close" onclick="update_logo_window_off();"/>
+		</div>
+		<div id="logo_update_header"></div>
+		<div>
+	    	<span id="update_choose_file" class="small_title"></span>
+	        <input id="update" type="file" name="update" style="display: none"/>
+	        <input type="text" id="filename" disabled="disabled"/>
+			<button id="scan_button" class="input_button"></button>
+	   		<span id="progress_bar" class="display_off">
+				<span id="progress"></span>
+			</span>
+			<span id="progress_text" class="display_off">0%</span>
+	        <input id="update_apply" type="button" name="up_but" value="apply" class="input_button" onClick="update_logo_apply_fun()" disabled="disabled"/>
+	    </div>
+	    <div>
+	    	<span id="warning" class="small_title"></span>
+	        <span id="update_txt"></span>
+	    </div>
+	</div>
+	<div id="main_content">
+		<div class="content_box">
+			<div class="content_box_header">
+				<span id="header_text"></span>
+			</div>
+			<div class="content">
+				<div class="subtitle">
+		            <span id="osd_region_1_setting_txt" class="osd_setting_subtitle"></span>
+		        </div>
+				<div>
+			        <span id="osd_region_1_status_txt" class="small_title"></span>
+			        <select id="osd_region_1_enable" name="osd_region_1_enable" onchange="osd_region_status_change(1);">
+			        	<option id="osd_region_1_off_txt" value="0"></option>
+			        	<option id="osd_region_1_on_txt" value="1"></option>
+			        </select>
+			    </div>
+				<div id="osd_region_1_type_block" style="display:none;">
+			        <span id="osd_region_1_type_txt" class="small_title"></span>
+			        <select id="osd_region_1_type" name="osd_region_1_type" onchange="osd_region_type_change(1);">
+			        	<option id="osd_region_1_type_text_txt" value="0"></option>
+			        	<option id="osd_region_1_type_image_txt" value="1"></option>
+			        	<option id="osd_region_1_type_roll_text_txt" value="2"></option>
+			        </select>
+			    </div>
+			    <div id="osd_region_1_diaphaneity_block" style="display:none;">
+			        <span id="osd_region_1_diaphaneity_txt" class="small_title"></span>
+			        <input id="osd_region_1_diaphaneity" maxlength='512' type='text' />
+			        <img src="../images/Error.png" alt="error" class="hint_image display_off" id="ip_hint_image"/>
+			        <span class="hint_text display_off" id="ip_hint_text"></span>
+			    </div>
+			    <div id="osd_region_1_x_block" style="display:none;">
+			        <span id="osd_region_1_x_txt" class="small_title"></span>
+			        <input id="osd_region_1_x" maxlength='512' type='text' />
+			        <img src="../images/Error.png" alt="error" class="hint_image display_off" id="ip_hint_image"/>
+			        <span class="hint_text display_off" id="ip_hint_text"></span>
+			    </div>
+			    <div id="osd_region_1_y_block" style="display:none;">
+			        <span id="osd_region_1_y_txt" class="small_title"></span>
+			        <input id="osd_region_1_y" maxlength='512' type='text' />
+			        <img src="../images/Error.png" alt="error" class="hint_image display_off" id="ip_hint_image"/>
+			        <span class="hint_text display_off" id="ip_hint_text"></span>
+			    </div>
+			    <div id="osd_region_1_logo_block" style="display:none;">
+			        <span id="osd_region_1_logo_txt" class="small_title logo_preview_text"></span>
+			        <img src="logo1.bmp" alt="LOGO" class="osd_region_logo" id="osd_region_1_logo" onclick="update_logo_window_on(1);"/>
+			        <img src="../images/Error.png" alt="error" class="hint_image display_off" id="ip_hint_image"/>
+			        <span class="hint_text display_off" id="ip_hint_text"></span>
+			    </div>
+			    <div id="osd_region_1_position_block" style="display:none;">
+			        <span id="osd_region_1_position_txt" class="small_title"></span>
+			        <input id="osd_region_1_position" maxlength='512' type='text' />
+			        <img src="../images/Error.png" alt="error" class="hint_image display_off" id="ip_hint_image"/>
+			        <span class="hint_text display_off" id="ip_hint_text"></span>
+			    </div>
+			    <div id="osd_region_1_speed_block" style="display:none;">
+			        <span id="osd_region_1_speed_txt" class="small_title"></span>
+			        <input id="osd_region_1_speed" maxlength='512' type='text' />
+			        <img src="../images/Error.png" alt="error" class="hint_image display_off" id="ip_hint_image"/>
+			        <span class="hint_text display_off" id="ip_hint_text"></span>
+			    </div>
+			    <div id="osd_region_1_text_block" style="display:none;">
+			        <span id="osd_region_1_text_txt" class="small_title"></span>
+			        <input id="osd_region_1_text" maxlength='512' type='text' />
+			        <img src="../images/Error.png" alt="error" class="hint_image display_off" id="ip_hint_image"/>
+			        <span class="hint_text display_off" id="ip_hint_text"></span>
+			    </div>
+			    <div id="osd_region_1_font_size_block" style="display:none;">
+			        <span id="osd_region_1_font_size_txt" class="small_title"></span>
+			        <input id="osd_region_1_font_size" maxlength='512' type='text' />
+			        <img src="../images/Error.png" alt="error" class="hint_image display_off" id="ip_hint_image"/>
+			        <span class="hint_text display_off" id="ip_hint_text"></span>
+			    </div>
+				<div id="osd_region_1_background_color_block" style="display:none;">
+			        <span id="osd_region_1_background_color_txt" class="small_title"></span>
+			        <select id="osd_region_1_background_color" name="osd_region_1_background_color">
+			        	<option id="osd_region_1_opacity_txt" value="0"></option>
+			        	<option id="osd_region_1_white_txt" value="1"></option>
+			        	<option id="osd_region_1_black_txt" value="2"></option>
+			        </select>
+			    </div>
+			    <div id="osd_region_1_color_block" style="display:none;">
+			        <span id="osd_region_1_color_txt" class="small_title"></span>
+			        <input id="osd_region_1_color" maxlength='512' value="0" type='text' class="color-box"/>
+			        <img src="../images/Error.png" alt="error" class="hint_image display_off" id="ip_hint_image"/>
+			        <span class="hint_text display_off" id="ip_hint_text"></span>
+			    </div>
+			    
+				<hr />
+				
+				<div class="subtitle">
+		            <span id="osd_region_2_setting_txt" class="osd_setting_subtitle"></span>
+		        </div>
+				<div>
+			        <span id="osd_region_2_status_txt" class="small_title"></span>
+			        <select id="osd_region_2_enable" name="osd_region_2_enable" onchange="osd_region_status_change(2);">
+			        	<option id="osd_region_2_off_txt" value="0"></option>
+			        	<option id="osd_region_2_on_txt" value="1"></option>
+			        </select>
+			    </div>
+				<div id="osd_region_2_type_block" style="display:none;">
+			        <span id="osd_region_2_type_txt" class="small_title"></span>
+			        <select id="osd_region_2_type" name="osd_region_1_type" onchange="osd_region_type_change(2);">
+			        	<option id="osd_region_2_type_text_txt" value="0"></option>
+			        	<option id="osd_region_2_type_image_txt" value="1"></option>
+			        	<option id="osd_region_2_type_roll_text_txt" value="2"></option>
+			        </select>
+			    </div>
+			    <div id="osd_region_2_diaphaneity_block" style="display:none;">
+			        <span id="osd_region_2_diaphaneity_txt" class="small_title"></span>
+			        <input id="osd_region_2_diaphaneity" maxlength='512' type='text' />
+			        <img src="../images/Error.png" alt="error" class="hint_image display_off" id="ip_hint_image"/>
+			        <span class="hint_text display_off" id="ip_hint_text"></span>
+			    </div>
+			    <div id="osd_region_2_x_block" style="display:none;">
+			        <span id="osd_region_2_x_txt" class="small_title"></span>
+			        <input id="osd_region_2_x" maxlength='512' type='text' />
+			        <img src="../images/Error.png" alt="error" class="hint_image display_off" id="ip_hint_image"/>
+			        <span class="hint_text display_off" id="ip_hint_text"></span>
+			    </div>
+			    <div id="osd_region_2_y_block" style="display:none;">
+			        <span id="osd_region_2_y_txt" class="small_title"></span>
+			        <input id="osd_region_2_y" maxlength='512' type='text' />
+			        <img src="../images/Error.png" alt="error" class="hint_image display_off" id="ip_hint_image"/>
+			        <span class="hint_text display_off" id="ip_hint_text"></span>
+			    </div>
+			    <div id="osd_region_2_logo_block" style="display:none;">
+			        <span id="osd_region_2_logo_txt" class="small_title logo_preview_text"></span>
+			        <img src="logo2.bmp" alt="LOGO" class="osd_region_logo" id="osd_region_2_logo" onclick="update_logo_window_on(2);"/>
+			        <img src="../images/Error.png" alt="error" class="hint_image display_off" id="ip_hint_image"/>
+			        <span class="hint_text display_off" id="ip_hint_text"></span>
+			    </div>
+			    <div id="osd_region_2_position_block" style="display:none;">
+			        <span id="osd_region_2_position_txt" class="small_title"></span>
+			        <input id="osd_region_2_position" maxlength='512' type='text' />
+			        <img src="../images/Error.png" alt="error" class="hint_image display_off" id="ip_hint_image"/>
+			        <span class="hint_text display_off" id="ip_hint_text"></span>
+			    </div>
+			    <div id="osd_region_2_speed_block" style="display:none;">
+			        <span id="osd_region_2_speed_txt" class="small_title"></span>
+			        <input id="osd_region_2_speed" maxlength='512' type='text' />
+			        <img src="../images/Error.png" alt="error" class="hint_image display_off" id="ip_hint_image"/>
+			        <span class="hint_text display_off" id="ip_hint_text"></span>
+			    </div>
+			    <div id="osd_region_2_text_block" style="display:none;">
+			        <span id="osd_region_2_text_txt" class="small_title"></span>
+			        <input id="osd_region_2_text" maxlength='512' type='text' />
+			        <img src="../images/Error.png" alt="error" class="hint_image display_off" id="ip_hint_image"/>
+			        <span class="hint_text display_off" id="ip_hint_text"></span>
+			    </div>
+			    <div id="osd_region_2_font_size_block" style="display:none;">
+			        <span id="osd_region_2_font_size_txt" class="small_title"></span>
+			        <input id="osd_region_2_font_size" maxlength='512' type='text' />
+			        <img src="../images/Error.png" alt="error" class="hint_image display_off" id="ip_hint_image"/>
+			        <span class="hint_text display_off" id="ip_hint_text"></span>
+			    </div>
+				<div id="osd_region_2_background_color_block" style="display:none;">
+			        <span id="osd_region_2_background_color_txt" class="small_title"></span>
+			        <select id="osd_region_2_background_color" name="osd_region_2_background_color">
+			        	<option id="osd_region_2_opacity_txt" value="0"></option>
+			        	<option id="osd_region_2_white_txt" value="1"></option>
+			        	<option id="osd_region_2_black_txt" value="2"></option>
+			        </select>
+			    </div>
+			    <div id="osd_region_2_color_block" style="display:none;">
+			        <span id="osd_region_2_color_txt" class="small_title"></span>
+			        <input id="osd_region_2_color" maxlength='512' value="0" type='text' class="color-box"/>
+			        <img src="../images/Error.png" alt="error" class="hint_image display_off" id="ip_hint_image"/>
+			        <span class="hint_text display_off" id="ip_hint_text"></span>
+			    </div>
+
+				<hr />
+				
+				<div class="subtitle">
+		            <span id="osd_region_3_setting_txt" class="osd_setting_subtitle"></span>
+		        </div>
+				<div>
+			        <span id="osd_region_3_status_txt" class="small_title"></span>
+			        <select id="osd_region_3_enable" name="osd_region_3_enable" onchange="osd_region_status_change(3);">
+			        	<option id="osd_region_3_off_txt" value="0"></option>
+			        	<option id="osd_region_3_on_txt" value="1"></option>
+			        </select>
+			    </div>
+				<div id="osd_region_3_type_block" style="display:none;">
+			        <span id="osd_region_3_type_txt" class="small_title"></span>
+			        <select id="osd_region_3_type" name="osd_region_1_type" onchange="osd_region_type_change(3);">
+			        	<option id="osd_region_3_type_text_txt" value="0"></option>
+			        	<option id="osd_region_3_type_image_txt" value="1"></option>
+			        	<option id="osd_region_3_type_roll_text_txt" value="2"></option>
+			        </select>
+			    </div>
+			    <div id="osd_region_3_diaphaneity_block" style="display:none;">
+			        <span id="osd_region_3_diaphaneity_txt" class="small_title"></span>
+			        <input id="osd_region_3_diaphaneity" maxlength='512' type='text' />
+			        <img src="../images/Error.png" alt="error" class="hint_image display_off" id="ip_hint_image"/>
+			        <span class="hint_text display_off" id="ip_hint_text"></span>
+			    </div>
+			    <div id="osd_region_3_x_block" style="display:none;">
+			        <span id="osd_region_3_x_txt" class="small_title"></span>
+			        <input id="osd_region_3_x" maxlength='512' type='text' />
+			        <img src="../images/Error.png" alt="error" class="hint_image display_off" id="ip_hint_image"/>
+			        <span class="hint_text display_off" id="ip_hint_text"></span>
+			    </div>
+			    <div id="osd_region_3_y_block" style="display:none;">
+			        <span id="osd_region_3_y_txt" class="small_title"></span>
+			        <input id="osd_region_3_y" maxlength='512' type='text' />
+			        <img src="../images/Error.png" alt="error" class="hint_image display_off" id="ip_hint_image"/>
+			        <span class="hint_text display_off" id="ip_hint_text"></span>
+			    </div>
+			    <div id="osd_region_3_logo_block" style="display:none;">
+			        <span id="osd_region_3_logo_txt" class="small_title logo_preview_text"></span>
+			        <img src="logo3.bmp" alt="LOGO" class="osd_region_logo" id="osd_region_3_logo" onclick="update_logo_window_on(3);"/>
+			        <img src="../images/Error.png" alt="error" class="hint_image display_off" id="ip_hint_image"/>
+			        <span class="hint_text display_off" id="ip_hint_text"></span>
+			    </div>
+			    <div id="osd_region_3_position_block" style="display:none;">
+			        <span id="osd_region_3_position_txt" class="small_title"></span>
+			        <input id="osd_region_3_position" maxlength='512' type='text' />
+			        <img src="../images/Error.png" alt="error" class="hint_image display_off" id="ip_hint_image"/>
+			        <span class="hint_text display_off" id="ip_hint_text"></span>
+			    </div>
+			    <div id="osd_region_3_speed_block" style="display:none;">
+			        <span id="osd_region_3_speed_txt" class="small_title"></span>
+			        <input id="osd_region_3_speed" maxlength='512' type='text' />
+			        <img src="../images/Error.png" alt="error" class="hint_image display_off" id="ip_hint_image"/>
+			        <span class="hint_text display_off" id="ip_hint_text"></span>
+			    </div>
+			    <div id="osd_region_3_text_block" style="display:none;">
+			        <span id="osd_region_3_text_txt" class="small_title"></span>
+			        <input id="osd_region_3_text" maxlength='512' type='text' />
+			        <img src="../images/Error.png" alt="error" class="hint_image display_off" id="ip_hint_image"/>
+			        <span class="hint_text display_off" id="ip_hint_text"></span>
+			    </div>
+			    <div id="osd_region_3_font_size_block" style="display:none;">
+			        <span id="osd_region_3_font_size_txt" class="small_title"></span>
+			        <input id="osd_region_3_font_size" maxlength='512' type='text' />
+			        <img src="../images/Error.png" alt="error" class="hint_image display_off" id="ip_hint_image"/>
+			        <span class="hint_text display_off" id="ip_hint_text"></span>
+			    </div>
+				<div id="osd_region_3_background_color_block" style="display:none;">
+			        <span id="osd_region_3_background_color_txt" class="small_title"></span>
+			        <select id="osd_region_3_background_color" name="osd_region_3_background_color">
+			        	<option id="osd_region_3_opacity_txt" value="0"></option>
+			        	<option id="osd_region_3_white_txt" value="1"></option>
+			        	<option id="osd_region_3_black_txt" value="2"></option>
+			        </select>
+			    </div>
+			    <div id="osd_region_3_color_block" style="display:none;">
+			        <span id="osd_region_3_color_txt" class="small_title"></span>
+			        <input id="osd_region_3_color" maxlength='512' value="0" type='text' class="color-box"/>
+			        <img src="../images/Error.png" alt="error" class="hint_image display_off" id="ip_hint_image"/>
+			        <span class="hint_text display_off" id="ip_hint_text"></span>
+			    </div>
+
+				<hr />
+				
+				<div class="subtitle">
+		            <span id="osd_region_4_setting_txt" class="osd_setting_subtitle"></span>
+		        </div>
+				<div>
+			        <span id="osd_region_4_status_txt" class="small_title"></span>
+			        <select id="osd_region_4_enable" name="osd_region_4_enable" onchange="osd_region_status_change(4);">
+			        	<option id="osd_region_4_off_txt" value="0"></option>
+			        	<option id="osd_region_4_on_txt" value="1"></option>
+			        </select>
+			    </div>
+				<div id="osd_region_4_type_block" style="display:none;">
+			        <span id="osd_region_4_type_txt" class="small_title"></span>
+			        <select id="osd_region_4_type" name="osd_region_1_type" onchange="osd_region_type_change(4);">
+			        	<option id="osd_region_4_type_text_txt" value="0"></option>
+			        	<option id="osd_region_4_type_image_txt" value="1"></option>
+			        	<option id="osd_region_4_type_roll_text_txt" value="2"></option>
+			        </select>
+			    </div>
+			    <div id="osd_region_4_diaphaneity_block" style="display:none;">
+			        <span id="osd_region_4_diaphaneity_txt" class="small_title"></span>
+			        <input id="osd_region_4_diaphaneity" maxlength='512' type='text' />
+			        <img src="../images/Error.png" alt="error" class="hint_image display_off" id="ip_hint_image"/>
+			        <span class="hint_text display_off" id="ip_hint_text"></span>
+			    </div>
+			    <div id="osd_region_4_x_block" style="display:none;">
+			        <span id="osd_region_4_x_txt" class="small_title"></span>
+			        <input id="osd_region_4_x" maxlength='512' type='text' />
+			        <img src="../images/Error.png" alt="error" class="hint_image display_off" id="ip_hint_image"/>
+			        <span class="hint_text display_off" id="ip_hint_text"></span>
+			    </div>
+			    <div id="osd_region_4_y_block" style="display:none;">
+			        <span id="osd_region_4_y_txt" class="small_title"></span>
+			        <input id="osd_region_4_y" maxlength='512' type='text' />
+			        <img src="../images/Error.png" alt="error" class="hint_image display_off" id="ip_hint_image"/>
+			        <span class="hint_text display_off" id="ip_hint_text"></span>
+			    </div>
+			    <div id="osd_region_4_logo_block" style="display:none;">
+			        <span id="osd_region_4_logo_txt" class="small_title logo_preview_text"></span>
+			        <img src="logo4.bmp" alt="LOGO" class="osd_region_logo" id="osd_region_4_logo" onclick="update_logo_window_on(4);"/>
+			        <img src="../images/Error.png" alt="error" class="hint_image display_off" id="ip_hint_image"/>
+			        <span class="hint_text display_off" id="ip_hint_text"></span>
+			    </div>
+			    <div id="osd_region_4_position_block" style="display:none;">
+			        <span id="osd_region_4_position_txt" class="small_title"></span>
+			        <input id="osd_region_4_position" maxlength='512' type='text' />
+			        <img src="../images/Error.png" alt="error" class="hint_image display_off" id="ip_hint_image"/>
+			        <span class="hint_text display_off" id="ip_hint_text"></span>
+			    </div>
+			    <div id="osd_region_4_speed_block" style="display:none;">
+			        <span id="osd_region_4_speed_txt" class="small_title"></span>
+			        <input id="osd_region_4_speed" maxlength='512' type='text' />
+			        <img src="../images/Error.png" alt="error" class="hint_image display_off" id="ip_hint_image"/>
+			        <span class="hint_text display_off" id="ip_hint_text"></span>
+			    </div>
+			    <div id="osd_region_4_text_block" style="display:none;">
+			        <span id="osd_region_4_text_txt" class="small_title"></span>
+			        <input id="osd_region_4_text" maxlength='512' type='text' />
+			        <img src="../images/Error.png" alt="error" class="hint_image display_off" id="ip_hint_image"/>
+			        <span class="hint_text display_off" id="ip_hint_text"></span>
+			    </div>
+			    <div id="osd_region_4_font_size_block" style="display:none;">
+			        <span id="osd_region_4_font_size_txt" class="small_title"></span>
+			        <input id="osd_region_4_font_size" maxlength='512' type='text' />
+			        <img src="../images/Error.png" alt="error" class="hint_image display_off" id="ip_hint_image"/>
+			        <span class="hint_text display_off" id="ip_hint_text"></span>
+			    </div>
+				<div id="osd_region_4_background_color_block" style="display:none;">
+			        <span id="osd_region_4_background_color_txt" class="small_title"></span>
+			        <select id="osd_region_4_background_color" name="osd_region_4_background_color">
+			        	<option id="osd_region_4_opacity_txt" value="0"></option>
+			        	<option id="osd_region_4_white_txt" value="1"></option>
+			        	<option id="osd_region_4_black_txt" value="2"></option>
+			        </select>
+			    </div>
+			    <div id="osd_region_4_color_block" style="display:none;">
+			        <span id="osd_region_4_color_txt" class="small_title"></span>
+			        <input id="osd_region_4_color" maxlength='512' value="0" type='text' class="color-box"/>
+			        <img src="../images/Error.png" alt="error" class="hint_image display_off" id="ip_hint_image"/>
+			        <span class="hint_text display_off" id="ip_hint_text"></span>
+			    </div>
+
+				<hr />
+				
+			    <div>
+			        <input id="osd_setting" type="button" value="setting" class="input_button" onclick="osd_setting()">
+			    </div>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>

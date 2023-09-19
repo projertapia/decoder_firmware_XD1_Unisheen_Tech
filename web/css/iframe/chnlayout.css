@@ -1,0 +1,18 @@
+#chnlayout_setting {
+	margin-left: 124px;
+}
+
+.display_off{
+	display: none;
+}
+#vo_source{
+	vertical-align: -2px;
+	margin-left: 15px;
+}
+
+.content .small_title {
+	font-size: 14px;
+	font-weight: 700;
+	width: 180px;
+	text-align: right;
+}

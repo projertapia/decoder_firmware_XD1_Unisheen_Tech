@@ -1,0 +1,27 @@
+#remserial_setting {
+	margin-left: 128px;
+}
+
+.content{
+	padding: 20px;
+}
+.content .hint_image {
+	width: 15px;
+	height: 15px;
+	vertical-align: -2px;
+	margin-left: 10px;
+}
+.content .hint_text {
+	margin-left: 5px;
+	font-size: 13px;
+}
+.content .display_off {
+	display: none;
+}
+hr {
+	background-color: rgb(186, 185, 185);
+	height: 1px;
+	border: none;
+	width: 100%;
+	margin: 20px auto;
+}

@@ -1,0 +1,47 @@
+.content .small_title {
+	text-align: left;
+	display: inline-block;
+	font-weight: normal;
+	width: auto;
+}
+hr {
+	background-color: rgb(186, 185, 185);
+	height: 1px;
+	border: none;
+	width: 100%;
+	margin: 15px auto;
+}
+.content .subtitle {
+	margin-bottom: 10px;
+}
+.content .status_subtitle {
+	font-size: 16px;
+	width: 150px;
+	color: rgb(34, 34, 34);
+	font-weight: bold;
+}
+.content .dynamic_data {
+	max-width: 500px;
+	max-height:17px;
+	text-align: left;
+	overflow: hidden;
+	vertical-align: -3px;
+}
+.content div {
+	margin: 4px 0px;
+}
+.content {
+	padding:20px;
+}
+#uri_scan{
+	position: absolute;
+	border: 1px solid rgb(204, 204, 204);
+	border-radius: 4px 4px 4px 4px;
+	padding: 5px;
+	background-color: rgb(229, 229, 229);
+	font-size: 14px;
+	color: rgb(85, 85, 85);
+}
+.content .display_off {
+	display: none;
+}

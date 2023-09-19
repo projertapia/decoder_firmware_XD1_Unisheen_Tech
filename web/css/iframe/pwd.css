@@ -1,0 +1,21 @@
+#pwd_setting {
+	margin-left: 128px;
+}
+.content input {
+	margin: 0px 15px 0px 4px;
+}
+.content .hint_image {
+	width: 15px;
+	height: 15px;
+	vertical-align: -4px;
+}
+.content .hint_text {
+	margin-left: 5px;
+	vertical-align: -1px;
+	width: 450px;
+	font-size: 13px;
+}
+.content .display_off {
+	display: none;
+}
+

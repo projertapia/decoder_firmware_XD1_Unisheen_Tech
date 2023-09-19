@@ -1,0 +1,21 @@
+#wnd{
+	width: 50px;
+}
+#videoswitch_setting {
+	margin-left:139px;
+}
+.content input {
+	margin: 0px 15px 0px 4px;
+	vertical-align: -1px;
+}
+
+.content .uri_input{
+	width: 400px;
+}
+
+.content .small_title {
+	font-size: 14px;
+	font-weight: 700;
+	width: 135px;
+	text-align: right;
+}

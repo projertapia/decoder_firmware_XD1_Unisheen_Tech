@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>update</title>
+	<link rel="stylesheet" type="text/css" href="../css/iframe_subpage.css">
+	<link rel="stylesheet" type="text/css" href="../css/iframe/update.css">
+    <script type="text/javascript" src="../js/jquery-1.6.2.min.js"></script>
+    <script type="text/javascript" src="../js/jquery.i18n.properties-min-1.0.9.js"></script>
+    <script type="text/javascript" src="../js/ajaxfileupload.js"></script>
+    <script type="text/javascript" src="../js/ui.js"></script>
+    <script type="text/javascript" src="../js/subpage_intercept_f5.js"></script>
+    <script type="text/javascript" src="../js/iframe/update.js"></script>
+</head>
+<body>
+	<div id="main_content">
+		<div class="content_box">
+			<div class="content_box_header">
+				<span id="header_upload_text"></span>
+			</div>
+			<div class="content">
+			    <div>
+			        <span id="update_version_txt" class="small_title"></span>
+			        <span id="update_version"></span>
+			    </div>
+			    <div>
+			    	<span id="update_choose_file" class="small_title"></span>
+			        <input id="update" type="file" name="update" style="display: none"/>
+			        <input type="text" id="filename" disabled="disabled"/>
+					<button id="scan_button" class="input_button"></button>
+			   		<span id="progress_bar" class="display_off">
+    					<span id="progress"></span>
+    				</span>
+    				<span id="progress_text" class="display_off">0%</span>
+			        <input id="update_apply" type="button" name="up_but" value="update_apply" class="input_button" onClick="update_apply_fun()" disabled="disabled"/>
+			        <img src="../images/loading.gif" alt="update_image" id="update_image" class="display_off"/>
+			        <span id="update_text" class="display_off"></span>
+			        <span id="update_kernel_mode_txt" class="display_off"></span>
+			    </div>
+			    <div>
+			    	<span id="warning" class="small_title"></span>
+			        <span id="update_txt"></span>
+			    </div>
+			</div>
+		</div>
+
+        <div class="content_box">
+			<div class="content_box_header">
+				<span id="header_backup_text"></span>
+			</div>
+			<div class="content">
+			    <div>
+                    <span class="small_title">&nbsp;</span>
+			        <input id="backup_firmware" type="button" value="setting" class="large_button" onclick="BackupFirmware(1)">
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input id="backup_config" type="button" value="setting" class="large_button" onclick="BackupFirmware(0)">
+			    </div>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>

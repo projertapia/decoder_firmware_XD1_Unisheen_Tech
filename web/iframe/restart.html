@@ -1,0 +1,62 @@
+﻿<!--
+ * @Author: iplusss@qq.com
+ * @Date: 2022-12-14 15:30:33
+ * @LastEditTime: 2022-12-16 14:41:37
+ * @LastEditors: iplusss
+ * @Description: 
+ * Copyright (c) 2022—2052 iplusss All rights reserved.
+-->
+<!DOCTYPE html>
+<html>
+<head>
+	<title>restart</title>
+	<link rel="stylesheet" type="text/css" href="../css/iframe_subpage.css">
+	<link rel="stylesheet" type="text/css" href="../css/iframe/restart.css">
+    
+    <link rel="stylesheet" type="text/css" href="../css/jquery-clockpicker.min.css">
+    <!-- 选取时间 -->
+    <script type="text/javascript" src="../js/jquery.min.js"></script>
+    <script type="text/javascript" src="../js/jquery-clockpicker.min.js"></script>
+    <script type="text/javascript">  
+        var jQuery_1_11_0 = $.noConflict(true);  
+    </script>
+
+    <script type="text/javascript" src="../js/jquery-1.6.2.min.js"></script>
+    <script type="text/javascript" src="../js/jquery.i18n.properties-min-1.0.9.js"></script>
+    <script type="text/javascript" src="../js/ui.js"></script>
+    <script type="text/javascript" src="../js/subpage_intercept_f5.js"></script>
+    <script type="text/javascript" src="../js/iframe/restart.js"></script>
+</head>
+<body>
+	<div id="main_content">
+		<div class="content_box">
+			<div class="content_box_header">
+				<span id="header_text"></span>
+			</div>
+			<div class="content">
+                <div>
+			        <span id="restart_enable_txt" class="small_title"></span>
+			        <select id="restart_enable" name="restart_enable">
+			        	<option id="restart_enable_off_txt" value="0"></option>
+			        	<option id="restart_enable_on_txt" value="1"></option>
+			        </select>
+			    </div>
+                <div>
+			        <span id="restart_time_txt" class="small_title"></span>
+			        <input id="restart_time" class="form-control" value="09:30" readonly="true" data-placement="bottom"/>
+			    </div>
+                <!-- 时间选择js放body前面好像没效果 -->
+                <script type="text/javascript">
+                    jQuery_1_11_0('#restart_time').clockpicker();
+                </script>
+
+			    <div>
+					<span id="" class="small_title"></span>
+			        <input id="restart_setting" type="button" value="setting" class="input_button" onclick="restart_setting()" />
+			    </div>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>

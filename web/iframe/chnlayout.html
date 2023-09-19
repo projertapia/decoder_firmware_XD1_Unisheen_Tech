@@ -1,0 +1,141 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+	<title>system</title>
+	<link rel="stylesheet" type="text/css" href="../css/iframe_subpage.css">
+	<link rel="stylesheet" type="text/css" href="../css/iframe/chnlayout.css">
+    <script type="text/javascript" src="../js/jquery-1.6.2.min.js"></script>
+    <script type="text/javascript" src="../js/jquery.i18n.properties-min-1.0.9.js"></script>
+    <script type="text/javascript" src="../js/ui.js"></script>
+    <script type="text/javascript" src="../js/subpage_intercept_f5.js"></script>
+    <script type="text/javascript" src="../js/iframe/chnlayout.js"></script>
+</head>
+<body>
+	<div id="main_content" class="display_off1">
+		<div class="content_box">
+			<div class="content_box_header">
+				<span id="header_text"></span>
+			</div>
+			<div class="content">
+			    <div>
+			        <span id="chnlayout_enable_txt" class="small_title"></span>
+			        <select id="chnlayout_enable" name="chnlayout_enable">
+			            <option value="0" id="chnlayout_option_disable"></option>
+			            <option value="1" id="chnlayout_option_enable"></option>
+			        </select>
+			    </div>
+                <div>
+			        <span id="chnlayout_template_txt" class="small_title"></span>
+			        <select id="chnlayout_template" name="chnlayout_template" onChange="ClickTemplate()">
+			            <option value="0" id="chnlayout_template_full1"></option>
+			            <option value="1" id="chnlayout_template_full2"></option>
+                        <option value="2" id="chnlayout_template_full3"></option>
+			            <option value="3" id="chnlayout_template_full4"></option>
+                        <option value="4" id="chnlayout_template_quar"></option>
+			            <option value="5" id="chnlayout_template_custom1"></option>
+                        <option value="6" id="chnlayout_template_custom2"></option>
+                        <option value="7" id="chnlayout_template_custom3"></option>
+                        <option value="8" id="chnlayout_template_custom4"></option>
+			        </select>
+                    <span class="hint_text display_on" id="chnlayout_template_desc"></span>
+			    </div>
+
+                <!--Chn1-->
+                <div>
+                    <span id="chn0_txt" class="small_title"></span>
+                    <span class="hint_text display_on" id="chn0_desc_txt"></span>
+                </div>
+                <div>
+                    <span id="chn0_x_txt" class="small_title"></span>
+                    <input id="chn0_x" maxlength='512' type='text' /><span>[0,<span id="chn0_width_x">720</span>]</span>
+                </div>
+                <div>
+                    <span id="chn0_y_txt" class="small_title"></span>
+                    <input id="chn0_y" maxlength='512' type='text' /><span>[0,<span id="chn0_width_y">576</span>]</span>
+                </div>
+                <div>
+                    <span id="chn0_w_txt" class="small_title"></span>
+                    <input id="chn0_w" maxlength='512' type='text' /><span>[0,<span id="chn0_width_w">720</span>]</span>
+                </div>
+                <div>
+                    <span id="chn0_h_txt" class="small_title"></span>
+                    <input id="chn0_h" maxlength='512' type='text' /><span>[0,<span id="chn0_width_h">576</span>]</span>
+                </div>
+                <br />
+                <!--Chn2-->
+                <div>
+                    <span id="chn1_txt" class="small_title"></span>
+                    <span class="hint_text display_on" id="chn1_desc_txt"></span>
+                </div>
+                <div>
+                    <span id="chn1_x_txt" class="small_title"></span>
+                    <input id="chn1_x" maxlength='512' type='text' /><span>[0,<span id="chn1_width_x">720</span>]</span>
+                </div>
+                <div>
+                    <span id="chn1_y_txt" class="small_title"></span>
+                    <input id="chn1_y" maxlength='512' type='text' /><span>[0,<span id="chn1_width_y">576</span>]</span>
+                </div>
+                <div>
+                    <span id="chn1_w_txt" class="small_title"></span>
+                    <input id="chn1_w" maxlength='512' type='text' /><span>[0,<span id="chn1_width_w">720</span>]</span>
+                </div>
+                <div>
+                    <span id="chn1_h_txt" class="small_title"></span>
+                    <input id="chn1_h" maxlength='512' type='text' /><span>[0,<span id="chn1_width_h">576</span>]</span>
+                </div>
+                <br />
+                <!--Chn3-->
+                <div>
+                    <span id="chn2_txt" class="small_title"></span>
+                    <span class="hint_text display_on" id="chn2_desc_txt"></span>
+                </div>
+                <div>
+                    <span id="chn2_x_txt" class="small_title"></span>
+                    <input id="chn2_x" maxlength='512' type='text' /><span>[0,<span id="chn2_width_x">720</span>]</span>
+                </div>
+                <div>
+                    <span id="chn2_y_txt" class="small_title"></span>
+                    <input id="chn2_y" maxlength='512' type='text' /><span>[0,<span id="chn2_width_y">576</span>]</span>
+                </div>
+                <div>
+                    <span id="chn2_w_txt" class="small_title"></span>
+                    <input id="chn2_w" maxlength='512' type='text' /><span>[0,<span id="chn2_width_w">720</span>]</span>
+                </div>
+                <div>
+                    <span id="chn2_h_txt" class="small_title"></span>
+                    <input id="chn2_h" maxlength='512' type='text' /><span>[0,<span id="chn2_width_h">576</span>]</span>
+                </div>
+                <br />
+                <!--Chn4-->
+                <div>
+                    <span id="chn3_txt" class="small_title"></span>
+                    <span class="hint_text display_on" id="chn3_desc_txt"></span>
+                </div>
+                <div>
+                    <span id="chn3_x_txt" class="small_title"></span>
+                    <input id="chn3_x" maxlength='512' type='text' /><span>[0,<span id="chn3_width_x">720</span>]</span>
+                </div>
+                <div>
+                    <span id="chn3_y_txt" class="small_title"></span>
+                    <input id="chn3_y" maxlength='512' type='text' /><span>[0,<span id="chn3_width_y">576</span>]</span>
+                </div>
+                <div>
+                    <span id="chn3_w_txt" class="small_title"></span>
+                    <input id="chn3_w" maxlength='512' type='text' /><span>[0,<span id="chn3_width_w">720</span>]</span>
+                </div>
+                <div>
+                    <span id="chn3_h_txt" class="small_title"></span>
+                    <input id="chn3_h" maxlength='512' type='text' /><span>[0,<span id="chn3_width_h">576</span>]</span>
+                </div>
+			    <br/>
+
+			    <div>
+			        <input id="chnlayout_setting" type="button" value="setting" class="input_button" onclick="chnlayout_setting()">
+			    </div>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>

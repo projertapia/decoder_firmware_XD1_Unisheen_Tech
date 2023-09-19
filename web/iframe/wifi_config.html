@@ -1,0 +1,89 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+	<title>network</title>
+	<link rel="stylesheet" type="text/css" href="../css/iframe_subpage.css">
+	<link rel="stylesheet" type="text/css" href="../css/iframe/wifi_config.css">
+    <script type="text/javascript" src="../js/jquery-1.6.2.min.js"></script>
+    <script type="text/javascript" src="../js/jquery.i18n.properties-min-1.0.9.js"></script>
+    <script type="text/javascript" src="../js/ui.js"></script>
+    <script type="text/javascript" src="../js/subpage_intercept_f5.js"></script>
+    <script type="text/javascript" src="../js/iframe/wifi_config.js"></script>
+</head>
+<body> 
+	<div id="main_content">
+		<div class="content_box">
+			<div class="content_box_header">
+				<span id="header_text"></span>
+			</div>
+			<div class="content">
+				<div class="subtitle">
+		            <span id="wifi_status_txt" class="wifi_subtitle"></span>
+		        </div>
+			    <div>
+			        <span id="wifi_switch_txt" class="small_title"></span>
+			        <select id="wifi_switch" name="wifi_switch">
+			        	<option id="wifi_switch_off_txt" value="0"></option>
+			        	<option id="wifi_switch_on_txt" value="1"></option>
+			        </select>
+			    </div>
+			    <div id="wifi_exist">
+				    <hr />
+					<div class="subtitle">
+			            <span id="wifi_connect_setting_text" class="wifi_subtitle"></span>
+			        </div>
+				    <div>
+				        <span id="wifi_list_txt" class="small_title"></span>
+				        <select id="wifi_list" name="wifi_list" onchange="auto_padding_ssid();">
+				        </select>
+				        <img src="../images/refrush.png" alt="error" class="hint_image" id="wifi_list_hint_image" onclick="wifi_refresh_ap();"/>
+				        <span class="hint_text display_off" id="wifi_list_hint_text"></span>
+				    </div>
+				    <div>
+				        <span id="wifi_essid_txt" class="small_title"></span>
+				        <input id="wifi_essid" maxlength='512' type='text' />
+				        <img src="../images/Error.png" alt="error" class="hint_image display_off" id="wifi_essid_hint_image"/>
+				        <span class="hint_text display_off" id="wifi_essid_hint_text"></span>
+				    </div>
+				    <div>
+				        <span id="wifi_password_txt" class="small_title"></span>
+				        <input id="wifi_password" maxlength='512' type='text' />
+				        <img src="../images/Error.png" alt="error" class="hint_image display_off" id="wifi_password_hint_image"/>
+				        <span class="hint_text display_off" id="wifi_password_hint_text"></span>
+				    </div>
+				    <div>
+				        <span id="wifi_dhcp_txt" class="small_title"></span>
+				        <select id="wifi_dhcp" name="wifi_dhcp" onchange="wifi_dhcp_change();">
+				        	<option id="wifi_dhcp_off_txt" value="0"></option>
+				        	<option id="wifi_dhcp_on_txt" value="1"></option>
+				        </select>
+				    </div>
+				    <div>
+				        <span id="wifi_ip_txt" class="small_title"></span>
+				        <input id="wifi_ip" maxlength='512' type='text' />
+				        <img src="../images/Error.png" alt="error" class="hint_image display_off" id="wifi_ip_hint_image"/>
+				        <span class="hint_text display_off" id="wifi_ip_hint_text"></span>
+				    </div>
+				    <div>
+				        <span id="wifi_netmask_txt" class="small_title"></span>
+				        <input id="wifi_netmask" maxlength='512' type='text' />
+				        <img src="../images/Error.png" alt="error" class="hint_image display_off" id="wifi_netmask_hint_image"/>
+				        <span class="hint_text display_off" id="wifi_netmask_hint_text"></span>
+				    </div>
+				    <div>
+				        <span id="wifi_gateway_txt" class="small_title"></span>
+				        <input id="wifi_gateway" maxlength='512' type='text' />
+				        <img src="../images/Error.png" alt="error" class="hint_image display_off" id="wifi_gateway_hint_image"/>
+				        <span class="hint_text display_off" id="wifi_gateway_hint_text"></span>
+				    </div>
+				    <div>
+				        <input id="wifi_config_button" type="button" value="setting" class="input_button" onclick="wifi_setting()">
+				    </div>
+			    </div>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>

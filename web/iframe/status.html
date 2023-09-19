@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>status</title>
+	<link rel="stylesheet" type="text/css" href="../css/iframe_subpage.css">
+	<link rel="stylesheet" type="text/css" href="../css/iframe/status.css">
+    <script type="text/javascript" src="../js/jquery-1.6.2.min.js"></script>
+    <script type="text/javascript" src="../js/jquery.i18n.properties-min-1.0.9.js"></script>
+    <script type="text/javascript" src="../js/ui.js"></script>
+    <script type="text/javascript" src="../js/subpage_intercept_f5.js"></script>
+    <script type="text/javascript" src="../js/iframe/status.js"></script>
+</head>
+<body>
+    <div id="main_content">
+		<div class="content_box">
+			<div class="content_box_header">
+				<span id="header_text"></span>
+			</div>
+		    <div id="status" class="content">
+		        <div class="subtitle">
+		            <span id="status_system_status_text" class="status_subtitle"></span>
+		        </div>
+		        <div>
+		            <span id="status_runtime_text" class="small_title"></span>
+		            <span id="status_runtime" class="dynamic_data"></span>
+		        </div>
+				<div>
+		            <span id="status_systime_text" class="small_title"></span>
+		            <span id="status_systime" class="dynamic_data"></span>
+					<span id="status_systime_sync_text" class="span_href" onclick="syncTime()"></span>
+		        </div>
+		        <div>
+		            <span id="status_cpu_usage_txt" class="small_title"></span>
+		            <span id="cpu_usage" class="dynamic_data"></span>
+		        </div>
+		        <div>
+		            <span id="status_mem_free_txt" class="small_title"></span>
+		            <span id="mem_free" class="dynamic_data"></span>
+				</div>
+				<div id="status_usb">
+		            <span id="status_usb_space_text" class="small_title"></span>
+		            <span id="status_usb_space" class="dynamic_data"></span>
+		        </div>
+				<div>
+		            <span id="status_net_text" class="small_title"></span>
+		            <span id="status_net" class="dynamic_data"></span>
+		        </div>
+		        <div>
+		            <span id="status_vo_text" class="small_title"></span>
+		            <span id="status_vo" class="dynamic_data"></span>
+		        </div>
+		        <div>
+		            <span id="status_wnd_num_text" class="small_title"></span>
+		            <span id="status_wnd_num" class="dynamic_data"></span>
+				</div>
+		        <div id="wifi_status" class="display_off">
+			        <hr />
+			        <div class="subtitle">
+			            <span id="status_wifi_status_text" class="status_subtitle"></span>
+			        </div>
+			        <div>
+			            <span id="status_wifi_dev_enable_text" class="small_title"></span>
+                        <span id="status_wifi_dev_enable" class="dynamic_data"></span>
+			        </div>
+                    <div id="wifi_status_info">
+                         <div>
+                            <span id="status_link_status_text" class="small_title"></span>
+			                <span id="status_link_status" class="dynamic_data"></span>
+                        </div>
+                        <div>
+                            <span id="status_wifi_essid_text" class="small_title"></span>
+                            <span id="status_wifi_essid" class="dynamic_data"></span>
+                        </div>
+                        <div>
+                            <span id="status_wifi_ip_text" class="small_title"></span>
+                            <span id="status_wifi_ip" class="dynamic_data"></span>
+                        </div>
+                        <div>
+                            <span id="status_wifi_mac_text" class="small_title"></span>
+                            <span id="status_wifi_mac" class="dynamic_data"></span>
+                        </div>
+                        <div>
+                            <span id="status_freq_text" class="small_title"></span>
+                            <span id="status_freq" class="dynamic_data"></span>
+                        </div>
+                        <div>
+                            <span id="status_singal_level_text" class="small_title"></span>
+                            <span id="status_singal_level" class="dynamic_data"></span>
+                        </div>
+                    </div>
+		        </div>
+		    </div>
+		</div>
+	</div>
+	<div id="uri_scan" style="display: none;"></div>
+</body>
+
+</html>

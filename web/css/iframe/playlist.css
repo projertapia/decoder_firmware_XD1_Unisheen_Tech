@@ -1,0 +1,25 @@
+#wnd {
+	width: 50px;
+}
+#playlist_setting {
+	margin-left: 134px;
+}
+.content input {
+	margin: 0px 15px 0px 4px;
+	vertical-align: -1px;
+}
+.content .uri_input {
+	width: 400px;
+}
+.content .cache_input {
+	width: 35px;
+}
+#playlist_config_discription {
+	vertical-align: top;
+}
+#playlist_config_discription_txt {
+	padding-top: 1px;
+}
+.content .small_title {
+	width: 130px;
+}
