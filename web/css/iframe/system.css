@@ -4,13 +4,13 @@
 
 .dividing_rule{
 	width: 250px;
-	height: 20px;
-	background-image: url("../../images/dividing_backgroud.png");
+	height: 25px;
+	background-color:#2b2c31;
 }
 .rule_pointer{
 	width: 10px;
-	height: 20px;
-	background-color: rgb(40, 93, 199);
+	height: 25px;
+	background-color:#3198fc;
 	vertical-align: -5px;
 }
 .number{

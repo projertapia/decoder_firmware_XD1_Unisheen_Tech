@@ -1,34 +1,46 @@
 .content .small_title {
 	text-align: left;
-	display: inline-block;
-	font-weight: normal;
-	width: auto;
+    display: inline-block;
+    font-weight: bold;
+    width: auto;
+    color: #91969a;
 }
 hr {
-	background-color: rgb(186, 185, 185);
+	background-color:#2d2d2d;
 	height: 1px;
 	border: none;
 	width: 100%;
 	margin: 15px auto;
 }
 .content .subtitle {
-	margin-bottom: 10px;
+	margin: 0 0 10px 0;
+    width: 100%;
+    padding: 0;
+    background-color: transparent;
 }
 .content .status_subtitle {
 	font-size: 16px;
 	width: 150px;
-	color: rgb(34, 34, 34);
+	color: #eaeef1;
 	font-weight: bold;
 }
 .content .dynamic_data {
 	max-width: 500px;
-	max-height:17px;
+	height:27px;
 	text-align: left;
 	overflow: hidden;
 	vertical-align: -3px;
+	font-size: 16px;
+    margin-top: 3px;
+	word-wrap: break-word;
 }
 .content div {
-	margin: 4px 0px;
+	width: calc(25% - 34px);
+    display: inline-grid;
+    background-color: #3c3f4d;
+    padding: 10px;
+    margin: 5px;
+    position: relative;
 }
 .content {
 	padding:20px;

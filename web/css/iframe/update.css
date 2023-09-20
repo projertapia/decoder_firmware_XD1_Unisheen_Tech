@@ -44,10 +44,20 @@
 .large_button {
 	width: 120px;
 	height: 30px;
-	background: url("../images/bg-button-green.gif") repeat-x left top rgb(40, 93, 199) !important;
+	background-color: #3198fc;
 	border: 0px;
 	font-size: 14px;
 	font-weight: bold;
 	color: white;
 	cursor: pointer;
+}
+.input_button{
+	min-width: 90px;
+    height: 30px;
+    background-color: #3198fc;
+    border: 0px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #eaeef1;
+    cursor: pointer;
 }

@@ -366,6 +366,7 @@ function update_logo_apply_fun() {
 			fileElementId : 'update',
 			cache : false,
 			success : function(data) {
+				console.log(data);
 			}
 		});
 	}
