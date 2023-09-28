@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Encoder Sender</title>
+    <script src="js/script-server.js"></script>
+    <link rel="stylesheet" href="css/styles-server.css">
+</head>
+<body>
+    <div class="container">
+        <table id="urls-table" class="ui-table" border=0 cellspacing=0>
+            <thead>
+                <tr>
+                    <th>Channel</th>
+                    <th>Audio</th>
+                <!-- Agrega más encabezados si es necesario -->
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Las filas existentes o vacías si no hay ninguna -->
+            </tbody>
+        </table>
+        <div id="clips-launch" class="div-list-box">
+            <div class="header">Clips</div>
+            <!-- Los divs se agregarán aquí -->
+
+        </div>
+    </div>
+    <div class="footer">
+        <div class="infoBox">
+            <div class="part">RUNTIME<span id="runtime"></span></div>
+            <div class="part">CPU<span id="cpu"></span></div>
+            <div class="part">OUTPUT<span id="vo"></span></div>
+        </div>
+        <div class="channels">
+            <div class="part">Canal 1<span id="ch1"></span></div>
+        </div>
+    </div>
+<script>
+    function tiempoUnix(){
+        return "_="+Math.floor(Date.now() / 1000);
+    }
+const credentials ="?user=admin&pass=admin&"
+const runtimeDiv = document.getElementById("runtime");
+const cpuDiv = document.getElementById('cpu');
+const voDiv = document.getElementById('vo');
+const ch1Div = document.getElementById('ch1');
+// URL del servidor que devuelve el XML
+const urlPlaylist = "http://" + xc_gethost() + "/get_playlist"+credentials+tiempoUnix();
+let currentPlayVideo = [];
+
+function getPlayList(){
+    // Realiza una solicitud HTTP para obtener el XML
+    fetch(urlPlaylist)
+    .then(response => response.text())
+    .then(xmlString => {
+        // Crear un analizador DOM
+        const parser = new DOMParser();
+        // Parsear el XML en un objeto DOM
+        const xmlDoc = parser.parseFromString(xmlString, "text/xml");
+        // Obtener los elementos <uriX>
+        const uriElements = xmlDoc.querySelectorAll("playlist > uri0, playlist > uri1, playlist > uri2, playlist > uri3");
+        // Obtener la tabla existente por su ID
+        const tablaExistente = document.getElementById("urls-table");
+        const tbody = tablaExistente.querySelector("tbody");
+        // Obtener el cuerpo de la tabla
+        tbody.innerHTML = "";
+        const audioValues = [];
+        let status;
+        // Recorrer los elementos y agregarlos como filas a la tabla existente
+        uriElements.forEach((uriElement, index) => {
+        const tr = document.createElement("tr");
+        const td = document.createElement("td");
+        const tdAudio = document.createElement("td");
+        tdAudio.classList.add("audio");
+        currentPlayVideo[uriElement.tagName] = uriElement.textContent;
+        td.textContent = uriElement.textContent;
+        if(uriElement.getAttribute("audio") == 1){
+            status = "Audio ON";
+            tr.classList.add("on");
+        }else{
+            status = "Audio OFF";
+        }
+        tdAudio.textContent = status;
+        tr.appendChild(td);
+        tr.appendChild(tdAudio);
+        tbody.appendChild(tr);
+        });
+    })
+    .catch(error => {
+        console.error('Error al obtener el XML:', error);
+    });
+}
+getPlayList();
+
+const urlFindFiles = "http://" + xc_gethost() + "/findfiles"+credentials+tiempoUnix();
+
+function getFindFiles(){
+    // Realiza una solicitud HTTP para obtener el XML
+    fetch(urlFindFiles)
+    .then(response => response.text())
+    .then(xmlString => {
+        // Crear un analizador DOM
+        const parser = new DOMParser();
+
+        // Parsear el XML en un objeto DOM
+        const xmlDoc = parser.parseFromString(xmlString, "text/xml");
+
+        // Obtener los elementos <item> del XML
+        const itemElements = xmlDoc.querySelectorAll("item");
+
+        // Obtener el div principal con el ID "clips-launch"
+        const clipsLaunchDiv = document.getElementById("clips-launch");
+
+        // Recorrer los elementos <item> y crear divs para cada uno
+        let idVideoList = 0;
+        itemElements.forEach(itemElement => {
+            var encontrado = false;
+            const div = document.createElement("div");
+            const nameClip = itemElement.textContent.replace("/usb/", "");
+            div.textContent = nameClip;
+            div.setAttribute("id","idListVideo-"+idVideoList);
+            div.setAttribute("onClick","playVideo('"+itemElement.textContent+"', '0','idListVideo-"+idVideoList+"')");
+            
+            ++idVideoList;
+            for (var clave in currentPlayVideo) {
+                if (currentPlayVideo.hasOwnProperty(clave) && currentPlayVideo[clave] === itemElement.textContent) {
+                    encontrado = true;
+                    div.setAttribute("class","active");
+                    break; // Si se encuentra el valor, puedes salir del bucle
+                }
+            }
+            clipsLaunchDiv.appendChild(div); // Agregar el div al div principal
+        });
+
+    })
+    .catch(error => {
+        console.error('Error al obtener el XML:', error);
+    });
+}
+getFindFiles();
+
+function playVideo(video,slot,id){
+    console.info(id);
+    let selectVideo = document.getElementById(id);
+    const inputString = video;
+    const encodedString = encodeURIComponent(inputString);
+   const UrlVideo = "http://"+xc_gethost()+"/set_playlist"+credentials+"+wnd=1&uri"+slot+"="+encodedString+"&uri"+slot+"_audio=1";
+ //  alert(UrlVideo);
+    // Realiza la solicitud GET utilizando fetch()
+    fetch(UrlVideo)
+    .then(response => response.text()) // Convierte la respuesta a texto
+    .then(xmlText => {
+    // Utiliza un analizador DOM para parsear el XML
+    const parser = new DOMParser();
+    const xmlDoc = parser.parseFromString(xmlText, "text/xml");
+
+    // Obtiene el valor dentro de la etiqueta <return>
+    const returnElement = xmlDoc.querySelector("return");
+    const returnText = returnElement.textContent.trim(); // Elimina espacios en blanco
+
+    // Comprueba si el valor es "ok" para validar si la solicitud se ejecutó con éxito
+    if (returnText === "ok") {
+      console.log("La solicitud se ejecutó con éxito.");
+      getPlayList();
+      console.info(selectVideo);
+      cleanClass("clips-launch","active")
+      selectVideo.classList.add("active");
+    } else {
+      console.error("La solicitud no se ejecutó con éxito.");
+    }
+  })
+  .catch(error => {
+    console.error("Error:", error);
+  });
+
+}
+//getinfo
+//http://192.168.3.100/get_status?_=1695140196174
+let maxErrors = 10;
+let errorsCounter = 0;
+function consultarEstado() {
+  // Definir la URL que deseas consultar
+    if(errorsCounter <= maxErrors){
+        var url = "http://"+xc_gethost()+"/get_status"+credentials+tiempoUnix; // Reemplaza "tu_ip" con la dirección IP real
+        // Realizar la solicitud HTTP GET
+        fetch(url)
+        .then(function(response) {
+        if (response.status !== 200) {
+            console.log("Hubo un problema. Código de estado: " + response.status);
+            errorsCounter++
+            return;
+        }
+            // Procesar la respuesta como texto (XML en este caso)
+            response.text().then(function(xmlText) {
+                var parser = new DOMParser();
+                var xmlDoc = parser.parseFromString(xmlText, "text/xml");
+                var runtimeValue = xmlDoc.querySelector("runtime").textContent;
+                var cpuValue = xmlDoc.querySelector("cpu_usage").textContent;
+                var voValue = xmlDoc.querySelector("vo").textContent;
+                runtimeDiv.innerHTML = runtimeValue;
+                cpuDiv.innerHTML = cpuValue+'%';
+                voDiv.innerHTML = voValue;
+                //CHANNELS
+                var s0Element = xmlDoc.querySelector("s0");
+                
+                if (s0Element) {
+                    var uriElement = s0Element.querySelector("uri").textContent.replace("/usb/", "");
+                    ch1Div.innerHTML = uriElement;
+                    
+                }
+            });
+        })
+        .catch(function(error) {
+        console.log("Ocurrió un error en la solicitud:", error);
+        errorsCounter++
+        });
+    }
+}
+// Llamar a la función cada 1 segundo (1000 ms)
+setInterval(consultarEstado, 10000);
+
+
+function cleanClass(divFather,nameClassE){
+    var clipsLaunchDiv = document.getElementById(divFather);
+    // Encuentra todos los elementos con la clase "active" dentro del div
+    var elementosActivos = clipsLaunchDiv.getElementsByClassName(nameClassE);
+    // Itera a través de los elementos encontrados y elimina la clase "active" de cada uno
+    for (var i = 0; i < elementosActivos.length; i++) {
+    elementosActivos[i].classList.remove(nameClassE);
+    }
+}
+</script>
+</body>
+</html>

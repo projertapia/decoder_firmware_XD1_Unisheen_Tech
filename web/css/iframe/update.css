@@ -20,7 +20,7 @@
 #progress_text {
 	width: 35px;
 	text-align: center;
-	color: rgb(85, 85, 85);
+	color: #eaeef1;
 }
 #update_version {
 	text-align: left;
@@ -48,7 +48,7 @@
 	border: 0px;
 	font-size: 14px;
 	font-weight: bold;
-	color: white;
+	color: #eaeef1;
 	cursor: pointer;
 }
 .input_button{

@@ -93,43 +93,54 @@ function ClickTemplate()
 	}
 	else if(template == 5){//top 3
 		var chn_w = Math.floor(screen_max_width / 3);
-		var chn_h = Math.floor(screen_max_height / 4);
-		chn_w = Math.floor(chn_w / 2) * 2 - 2;
-		chn_h = Math.floor(chn_h / 2) * 2;
-		xarray = new Array(0, chn_w + 4, chn_w*2 + 6, 0);
-		yarray = new Array(0, 0, 0, chn_h + 2);
-		warray = new Array(chn_w, chn_w, chn_w, screen_max_width);
-		harray = new Array(chn_h, chn_h, chn_h, screen_max_height-chn_h - 2);
-	}
-	else if(template == 6){//left 3
-		var chn_w = Math.floor(screen_max_width / 4);
 		var chn_h = Math.floor(screen_max_height / 3);
-		chn_w = Math.floor(chn_w / 2) * 2;
-		chn_h = Math.floor(chn_h / 2) * 2 - 2;
-		xarray = new Array(0, 0, 0, chn_w + 2);
-		yarray = new Array(0, chn_h + 4, chn_h*2 + 6, 0);
-		warray = new Array(chn_w, chn_w, chn_w, screen_max_width-chn_w - 2);
-		harray = new Array(chn_h, chn_h, chn_h, screen_max_height);
+		var cch_w_four = Math.floor(screen_max_width / 1.522);
+		var chn_h_four = Math.floor(screen_max_height / 2);
+		var chn_h_w =  Math.floor( (screen_max_width-cch_w_four)/2);
+
+		/*chn_w = Math.floor(chn_w / 2) * 2 - 2;
+		chn_h = Math.floor(chn_h / 2) * 2;*/
+		xarray = new Array(0, chn_w, chn_w*2, chn_h_w);
+		yarray = new Array(0, 0, 0, chn_h);
+		warray = new Array(chn_w, chn_w, chn_w, cch_w_four);
+		harray = new Array(chn_h, chn_h, chn_h, screen_max_height-chn_h);
+	}
+	else if(template == 6){//left 3 
+		var chn_w = Math.floor(screen_max_width / 3);
+		var chn_h = Math.floor(screen_max_height / 3);
+		var cch_w_four = Math.floor(screen_max_width / 1.5);
+		var chn_h_four = Math.floor(screen_max_height / 1.5);
+		var chh_y_four = Math.floor((screen_max_height-chn_h_four) / 2);
+		/*chn_w = Math.floor(chn_w / 2) * 2;
+		chn_h = Math.floor(chn_h / 2) * 2 - 2;*/
+		xarray = new Array(0, 0, 0, chn_w);
+		yarray = new Array(0, chn_h, chn_h*2, chh_y_four);
+		warray = new Array(chn_w, chn_w, chn_w, cch_w_four);
+		harray = new Array(chn_h, chn_h, chn_h, chn_h_four);
 	}
 	else if(template == 7){//down 3
 		var chn_w = Math.floor(screen_max_width / 3);
-		var chn_h = Math.floor(screen_max_height / 4);
-		chn_w = Math.floor(chn_w / 2) * 2 - 2;
-		chn_h = Math.floor(chn_h / 2) * 2;
-		xarray = new Array(0, 0, chn_w + 4, chn_w*2 + 6);
+		var chn_h = Math.floor(screen_max_height / 3);
+		var cch_w_four = Math.floor(screen_max_width / 1.5);
+		var chn_h_four = Math.floor(screen_max_height / 1.5);
+		var chh_x_four = Math.floor((screen_max_width-cch_w_four) / 2);
+		/*chn_w = Math.floor(chn_w / 2) * 2 - 2;
+		chn_h = Math.floor(chn_h / 2) * 2;*/
+		xarray = new Array(chh_x_four, 0, chn_w, chn_w*2);
 		yarray = new Array(0, screen_max_height-chn_h, screen_max_height-chn_h, screen_max_height-chn_h);
-		warray = new Array(screen_max_width, chn_w, chn_w, chn_w);
-		harray = new Array(screen_max_height-chn_h - 2, chn_h, chn_h, chn_h );
+		warray = new Array(cch_w_four, chn_w, chn_w, chn_w);
+		harray = new Array(screen_max_height-chn_h, chn_h, chn_h, chn_h );
 	}
 	else if(template == 8){//right 3
-		var chn_w = Math.floor(screen_max_width / 4);
+		var chn_w = Math.floor(screen_max_width / 3);
 		var chn_h = Math.floor(screen_max_height / 3);
-		chn_w = Math.floor(chn_w / 2) * 2;
-		chn_h = Math.floor(chn_h / 2) * 2 - 2;
+		var cch_w_four = Math.floor(screen_max_width / 1.5);
+		var chn_h_four = Math.floor(screen_max_height / 1.5);
+		var chh_y_four = Math.floor((screen_max_height-chn_h_four) / 2);
 		xarray = new Array(0, screen_max_width - chn_w, screen_max_width - chn_w, screen_max_width - chn_w);
-		yarray = new Array(0, 0, chn_h + 4, chn_h * 2 + 6);
-		warray = new Array(screen_max_width - chn_w - 2, chn_w, chn_w, chn_w);
-		harray = new Array(screen_max_height, chn_h, chn_h, chn_h);
+		yarray = new Array(chh_y_four, 0, chn_h, chn_h * 2);
+		warray = new Array(cch_w_four, chn_w, chn_w, chn_w);
+		harray = new Array(chn_h_four, chn_h, chn_h, chn_h);
 	}
 
 	for(var i = 0; i < xc_getwndnum(); ++i) {
@@ -238,7 +249,7 @@ function check_vopos(num)
 	var w = $("#chn" + num + "_w").val();
 	var h = $("#chn" + num + "_h").val();
 	var p = $("#chn" + num + "_prior").val();
-	//js ×Ö·û´®"" == 0
+	//js ï¿½Ö·ï¿½ï¿½ï¿½"" == 0
 	if(x == "" || y == "" || w == "" || h == "" || p == "") {
 		alert($.i18n.prop('system_cvbs_empty_txt'));
 		return false;
