@@ -122,7 +122,7 @@ header .btn-header.right{position: absolute; right: 0;}
 *:focus-visible {
   outline: none;
 }
-.blackout{z-index: 3;height: 100vh; width: 100vw; background-color: rgb(15 22 32 / 93%);position: fixed;top: 0;left: 0; display: none;}
+.blackout{z-index: 3;height: 100%; width: 100%; background-color: rgb(15 22 32 / 93%);position: fixed;top: 0;left: 0; display: none;}
 .blackout.open{display: block;}
 .menu-modal{height: 50px; width: 100%; background-color: #000; position: relative;}
 .modal{z-index: 4; width: 70%; max-width: 650px; margin: 0 auto; display: none; background-color: #0f1620; box-shadow: 0 0 20px #000000;
@@ -152,8 +152,11 @@ header .btn-header.right{position: absolute; right: 0;}
     .footer .channels{width: 100%;}
     .footer .part span{font-weight: normal;font-size: 0.8em;}
     .box.large,.box.small{width: calc(50% - 20px);}
-    .box .item-info{white-space: initial;}
+    .box .item-info{white-space: nowrap; overflow-x: scroll;}
+    .div-list-box div{white-space: nowrap; text-overflow: ellipsis; overflow-x: hidden;}
+    .modal{width: 90%;}
     .line-btn{margin: 0;}
     .section {margin: 15px 5px;}
     .footer .channels .part{padding: 10px;}
+    .div-list-box div{white-space: nowrap; text-overflow: ellipsis; overflow: hidden;}
 }
