@@ -1,101 +1,162 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<html lang="en"><head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Encoder Sender</title>
+    <title>PlayOut Decoder</title>
     <script src="js/script-server.js"></script>
     <link rel="stylesheet" href="css/styles-server.css">
-</head>
 <body>
+    <header>
+        <a href="playout.html" class="btn-header active">PlayOut</a>
+        <!--<a href="playout4.html" class="btn-header">PlayOut4</a>-->
+        <a onclick="openSettings('settings','open')" class="btn-header right">Settings</a>
+    </header>
     <div class="container">
-        <table id="urls-table" class="ui-table" border=0 cellspacing=0>
-            <thead>
-                <tr>
-                    <th>Channel</th>
-                    <th>Audio</th>
-                <!-- Agrega más encabezados si es necesario -->
-                </tr>
-            </thead>
-            <tbody>
-                <!-- Las filas existentes o vacías si no hay ninguna -->
-            </tbody>
-        </table>
-        <div id="clips-launch" class="div-list-box">
-            <div class="header">Clips</div>
-            <!-- Los divs se agregarán aquí -->
-
+        <div class="line-btn">
+            <div class="box large">
+                <span class="info">Play now</span>
+                <p class="item-info" id="playnow"></p>
+            </div>
+            <div class="box checkbox small">
+                <span class="info">Audio</span>
+                <div class="small-box">
+                    <label class="switch">
+                        <input type="checkbox" id="audio-ch0" onchange="audioToogle(0)">
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="section">
+            <span class="info">Available Clips USB</span>
+            <div id="clips-launch" class="div-list-box">
+                <!-- Los divs se agregarán aquí -->
+            </div>
+        </div>
+        <div class="section">
+            <span class="info">Available pull mode</span>
+            <div id="url-launch" class="div-list-box">
+                <div id="idListUrl-0" onclick="playVideo('http://username:password@192.168.1.168/0.ts', '0','idListUrl-0')">http://username:password@192.168.1.168/0.ts</div>
+                <div id="idListUrl-1" onclick="playVideo('http://username:password@192.168.1.168/0.flv', '0','idListUrl-1')">http://username:password@192.168.1.168/0.flv</div>
+                <div id="idListUrl-2" onclick="playVideo('http://username:password@192.168.1.168/0.m3u8', '0','idListUrl-2')">http://username:password@192.168.1.168/0.m3u8</div>
+                <div id="idListUrl-3" onclick="playVideo('rtsp://username:password@192.168.1.168/0', '0','idListUrl-3')">rtsp://username:password@192.168.1.168/0 (rtsp over tcp)</div>
+                <div id="idListUrl-4" onclick="playVideo('rtsp://username:password@192.168.1.168/0?udp', '0','idListUrl-4')">rtsp://username:password@192.168.1.168/0?udp (rtsp over udp)</div>
+                <div id="idListUrl-5" onclick="playVideo('rtmp://username:password@192.168.1.168/live/0', '0','idListUrl-5')">rtmp://username:password@192.168.1.168/live/0</div>
+                <div id="idListUrl-6" onclick="playVideo('rtmps://username:password@192.168.1.168/live/0', '0','idListUrl-8')">rtmps://username:password@192.168.1.168/live/0</div>
+                <div id="idListUrl-7" onclick="playVideo('udp://username:password@238.0.0.1:1234', '0','idListUrl-9')">udp://username:password@238.0.0.1:1234</div>
+            </div>
+        </div>
+        <div class="section">
+            <span class="info">Available SRT listener mode</span>
+            <div id="srt-listener-launch" class="div-list-box">
+                <div id="idListSrtLis-0" onclick="playVideo('srt://0.0.0.0:9000?mode=listener&smoother=live&pbkeylen=16&passphrase=password', '0','idListSrtLis-0')">srt://0.0.0.0:9000?mode=listener&smoother=live&pbkeylen=16&passphrase=password</div>
+            </div>
+        </div>
+        <div class="section">
+            <span class="info">Available SRT caller mode</span>
+            <div id="srt-caller-launch" class="div-list-box">
+                <div id="idListSrtCall-0" onclick="playVideo('srt://192.168.1.168:9000?smoother=live&pbkeylen=16&passphrase=password', '0','idListSrtCall-0')">srt://192.168.1.168:9000?smoother=live&pbkeylen=16&passphrase=password</div>
+            </div>
         </div>
     </div>
     <div class="footer">
         <div class="infoBox">
-            <div class="part">RUNTIME<span id="runtime"></span></div>
-            <div class="part">CPU<span id="cpu"></span></div>
-            <div class="part">OUTPUT<span id="vo"></span></div>
+            <div class="part">RUNTIME<span id="runtime">0000-00-00 00:00:00</span></div>
+            <div class="part">CPU<span id="cpu">100%</span></div>
+            <div class="part">OUTPUT<span id="vo">1080P60</span></div>
+            <div class="part">Net status<span id="ss">normal</span></div>
         </div>
         <div class="channels">
-            <div class="part">Canal 1<span id="ch1"></span></div>
+            <div class="part one" id="ch1Box">Canal 1 | <b id="alive1"></b><span id="ch1"></span></div>
+            <div class="part" id="ch2Box" style="display: none;">Canal 2<span id="ch2"></span></div>
+            <div class="part" id="ch3Box" style="display: none;">Canal 3<span id="ch3"></span></div>
+            <div class="part" id="ch4Box" style="display: none;">Canal 4<span id="ch4"></span></div>
+        </div>
+    </div>
+    <div class="blackout" id="blackout"></div>
+    <div class="modal" id="settings">
+        <div class="menu-modal">
+            <span class="info-header">Settings</span>
+            <span class="close-modal" onclick="openSettings('settings','close')">X</span>
+        </div>
+        <div class="content-modal">
+            <div class="box col-50">
+                <span class="info">USER</span>
+                <input type="text" name="user" class="item-input" id="settings-user">
+            </div>
+            <div class="box col-50">
+                <span class="info">PASSWORD</span>
+                <input type="text" name="pass" class="item-input" id="settings-pass">
+            </div>
+            <div class="box checkbox small">
+                <span class="info">Credentials</span>
+                <div class="small-box">
+                    <label class="switch">
+                        <input type="checkbox" id="checkCredentials" checked>
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="footer-modal">
+            <span class="btn-header" onclick="saveOaut('settings-user','settings-pass','checkCredentials','settings')">Save</span>
+            <span class="btn-header cancel" onclick="openSettings('settings','close')">Cancel</span>
         </div>
     </div>
 <script>
     function tiempoUnix(){
         return "_="+Math.floor(Date.now() / 1000);
     }
-const credentials ="?user=admin&pass=admin&"
-const runtimeDiv = document.getElementById("runtime");
-const cpuDiv = document.getElementById('cpu');
-const voDiv = document.getElementById('vo');
-const ch1Div = document.getElementById('ch1');
-// URL del servidor que devuelve el XML
-const urlPlaylist = "http://" + xc_gethost() + "/get_playlist"+credentials+tiempoUnix();
-let currentPlayVideo = [];
+    const credentials ="?user=admin&pass=admin&"
+    const playnow = document.getElementById("playnow");
+    const audio0 = document.getElementById("audio-ch0");
+    const runtimeDiv = document.getElementById("runtime");
+    const cpuDiv = document.getElementById('cpu');
+    const ssDiv = document.getElementById('ss');
+    const voDiv = document.getElementById('vo');
+    const ch1Div = document.getElementById('ch1');
+    const ch1AliveDiv = document.getElementById('alive1');
+    const ch2Div = document.getElementById('ch2');
+    const ch3Div = document.getElementById('ch3');
+    const ch4Div = document.getElementById('ch4');
+    const ch2Box = document.getElementById('ch2Box');
+    const ch3Box = document.getElementById('ch3Box');
+    const ch4Box = document.getElementById('ch4Box');
+    // URL del servidor que devuelve el XML
+    let timeNow = tiempoUnix();
+    const urlPlaylist = "http://" + xc_gethost() + "/get_playlist"+credentials+timeNow;
+    let currentPlayVideo = [];
 
-function getPlayList(){
-    // Realiza una solicitud HTTP para obtener el XML
-    fetch(urlPlaylist)
-    .then(response => response.text())
-    .then(xmlString => {
-        // Crear un analizador DOM
-        const parser = new DOMParser();
-        // Parsear el XML en un objeto DOM
-        const xmlDoc = parser.parseFromString(xmlString, "text/xml");
-        // Obtener los elementos <uriX>
-        const uriElements = xmlDoc.querySelectorAll("playlist > uri0, playlist > uri1, playlist > uri2, playlist > uri3");
-        // Obtener la tabla existente por su ID
-        const tablaExistente = document.getElementById("urls-table");
-        const tbody = tablaExistente.querySelector("tbody");
-        // Obtener el cuerpo de la tabla
-        tbody.innerHTML = "";
-        const audioValues = [];
-        let status;
-        // Recorrer los elementos y agregarlos como filas a la tabla existente
-        uriElements.forEach((uriElement, index) => {
-        const tr = document.createElement("tr");
-        const td = document.createElement("td");
-        const tdAudio = document.createElement("td");
-        tdAudio.classList.add("audio");
-        currentPlayVideo[uriElement.tagName] = uriElement.textContent;
-        td.textContent = uriElement.textContent;
-        if(uriElement.getAttribute("audio") == 1){
-            status = "Audio ON";
-            tr.classList.add("on");
-        }else{
-            status = "Audio OFF";
-        }
-        tdAudio.textContent = status;
-        tr.appendChild(td);
-        tr.appendChild(tdAudio);
-        tbody.appendChild(tr);
+    function getPlayList(){
+        // Realiza una solicitud HTTP para obtener el XML
+        fetch(urlPlaylist)
+        .then(response => response.text())
+        .then(xmlString => {
+            // Parsear el contenido XML
+            const parser = new DOMParser();
+            const xmlDoc = parser.parseFromString(xmlString, 'text/xml');
+            // Obtener el valor de 'uri0'
+            const uri0 = xmlDoc.querySelector('uri0').textContent;
+            // Obtener el valor de 'audio' en 'uri0'
+            const audio1 = xmlDoc.querySelector('uri0').getAttribute('audio');
+            const playNowText = uri0.replace("/usb/", "");
+            localStorage.setItem("uri0", uri0);
+            playnow.innerHTML=playNowText;
+            // Guardar el valor en el Local Storage
+            localStorage.setItem("audio0", audio1);
+            if (audio1 === "1") {
+                audio0.checked = true;
+            }else{
+                audio0.checked = false;
+            }
+        })
+        .catch(error => {
+            console.error('Error al obtener el XML:', error);
         });
-    })
-    .catch(error => {
-        console.error('Error al obtener el XML:', error);
-    });
-}
-getPlayList();
+    }
+    getPlayList();
 
-const urlFindFiles = "http://" + xc_gethost() + "/findfiles"+credentials+tiempoUnix();
+const urlFindFiles = "http://" + xc_gethost() + "/findfiles"+credentials+timeNow;
 
 function getFindFiles(){
     // Realiza una solicitud HTTP para obtener el XML
@@ -123,18 +184,45 @@ function getFindFiles(){
             div.textContent = nameClip;
             div.setAttribute("id","idListVideo-"+idVideoList);
             div.setAttribute("onClick","playVideo('"+itemElement.textContent+"', '0','idListVideo-"+idVideoList+"')");
-            
+            let uri0 = localStorage.getItem("uri0");
             ++idVideoList;
-            for (var clave in currentPlayVideo) {
-                if (currentPlayVideo.hasOwnProperty(clave) && currentPlayVideo[clave] === itemElement.textContent) {
-                    encontrado = true;
-                    div.setAttribute("class","active");
-                    break; // Si se encuentra el valor, puedes salir del bucle
+            
+            if(uri0 == itemElement.textContent){
+                div.setAttribute("class","active");
+                encontrado = true;
+                localStorage.setItem("idList", "idListVideo-"+idVideoList);
+            }else{
+                var urlLaunchDiv = document.getElementById("url-launch");
+                var divs = urlLaunchDiv.querySelectorAll("div");                
+                for (var i = 0; i < divs.length; i++) {
+                    if (divs[i].textContent.trim() === uri0) {
+                        divs[i].classList.add("active");
+                        encontrado = true;
+                    }
+                }
+                if(encontrado == false){
+                    var srtListener = document.getElementById("srt-listener-launch");
+                    var divs = srtListener.querySelectorAll("div");                
+                    for (var i = 0; i < divs.length; i++) {
+                        if (divs[i].textContent.trim() === uri0) {
+                            divs[i].classList.add("active");
+                            encontrado = true;
+                        }
+                    }
+                }
+                if(encontrado == false){
+                    var srtCaller = document.getElementById("srt-caller-launch");
+                    var divs = srtCaller.querySelectorAll("div");                
+                    for (var i = 0; i < divs.length; i++) {
+                        if (divs[i].textContent.trim() === uri0) {
+                            divs[i].classList.add("active");
+                            encontrado = true;
+                        }
+                    }
                 }
             }
             clipsLaunchDiv.appendChild(div); // Agregar el div al div principal
         });
-
     })
     .catch(error => {
         console.error('Error al obtener el XML:', error);
@@ -143,11 +231,13 @@ function getFindFiles(){
 getFindFiles();
 
 function playVideo(video,slot,id){
+    let localAudio0 = localStorage.getItem("audio0");
+    localStorage.setItem("curretID0", id);
     console.info(id);
     let selectVideo = document.getElementById(id);
     const inputString = video;
     const encodedString = encodeURIComponent(inputString);
-   const UrlVideo = "http://"+xc_gethost()+"/set_playlist"+credentials+"+wnd=1&uri"+slot+"="+encodedString+"&uri"+slot+"_audio=1";
+    const UrlVideo = "http://"+xc_gethost()+"/set_playlist"+credentials+"+wnd=1&uri"+slot+"="+encodedString+"&uri"+slot+"_audio="+localAudio0;
  //  alert(UrlVideo);
     // Realiza la solicitud GET utilizando fetch()
     fetch(UrlVideo)
@@ -166,7 +256,10 @@ function playVideo(video,slot,id){
       console.log("La solicitud se ejecutó con éxito.");
       getPlayList();
       console.info(selectVideo);
-      cleanClass("clips-launch","active")
+      cleanClass("clips-launch","active");
+      cleanClass("url-launch","active");
+      cleanClass("srt-listener-launch","active");
+      cleanClass("srt-caller-launch","active");
       selectVideo.classList.add("active");
     } else {
       console.error("La solicitud no se ejecutó con éxito.");
@@ -178,13 +271,13 @@ function playVideo(video,slot,id){
 
 }
 //getinfo
-//http://192.168.3.100/get_status?_=1695140196174
+//http://192.168.1.168/get_status?_=1695140196174
 let maxErrors = 10;
 let errorsCounter = 0;
 function consultarEstado() {
   // Definir la URL que deseas consultar
     if(errorsCounter <= maxErrors){
-        var url = "http://"+xc_gethost()+"/get_status"+credentials+tiempoUnix; // Reemplaza "tu_ip" con la dirección IP real
+        var url = "http://"+xc_gethost()+"/get_status"+credentials+timeNow; // Reemplaza "tu_ip" con la dirección IP real
         // Realizar la solicitud HTTP GET
         fetch(url)
         .then(function(response) {
@@ -199,17 +292,63 @@ function consultarEstado() {
                 var xmlDoc = parser.parseFromString(xmlText, "text/xml");
                 var runtimeValue = xmlDoc.querySelector("runtime").textContent;
                 var cpuValue = xmlDoc.querySelector("cpu_usage").textContent;
+                var ssValue = xmlDoc.querySelector("net_status").textContent;
                 var voValue = xmlDoc.querySelector("vo").textContent;
                 runtimeDiv.innerHTML = runtimeValue;
+                switch (ssValue){
+                    case 1:
+                    ssText = 'INTERNET';
+                    break;
+                    case 2:
+                    ssText = 'INTERNET IP';
+                    break;
+                    case 3:
+                    ssText = 'LAN';
+                    break;
+                    case 4:
+                    ssText = 'LOCAL';
+                    break;
+                    default:
+                    ssText = 'LOCAL';
+                }
                 cpuDiv.innerHTML = cpuValue+'%';
+                ssDiv.innerHTML = ssText;
                 voDiv.innerHTML = voValue;
                 //CHANNELS
                 var s0Element = xmlDoc.querySelector("s0");
-                
+                var s1Element = xmlDoc.querySelector("s1");
+                var s2Element = xmlDoc.querySelector("s2");
+                var s3Element = xmlDoc.querySelector("s3");
+
                 if (s0Element) {
                     var uriElement = s0Element.querySelector("uri").textContent.replace("/usb/", "");
+                    var aliveElement = s0Element.querySelector("alive").textContent;
+                    var aliveTXT = (aliveElement === '1') ? "Normal" : "Abnormal";
                     ch1Div.innerHTML = uriElement;
+                    ch1AliveDiv.innerHTML = aliveTXT;
                     
+                }
+                if (s1Element) {
+                    ch2Box.style.display='initial';
+                    var uriElement = s1Element.querySelector("uri").textContent.replace("/usb/", "");
+                    ch2Div.innerHTML = uriElement;
+                    ch1Div.classList.remove='one';
+                }else{
+                    ch2Box.style.display='none';
+                }
+                if (s2Element) {
+                    ch3Box.style.display='initial';
+                    var uriElement = s2Element.querySelector("uri").textContent.replace("/usb/", "");
+                    ch3Div.innerHTML = uriElement;
+                }else{
+                    ch3Box.style.display='none';
+                }
+                if (s3Element) {
+                    ch4Box.style.display='initial';
+                    var uriElement = s3Element.querySelector("uri").textContent.replace("/usb/", "");
+                    ch4Div.innerHTML = uriElement;
+                }else{
+                    ch4Box.style.display='none';
                 }
             });
         })
@@ -220,7 +359,8 @@ function consultarEstado() {
     }
 }
 // Llamar a la función cada 1 segundo (1000 ms)
-setInterval(consultarEstado, 10000);
+consultarEstado();
+setInterval(consultarEstado, 1000);
 
 
 function cleanClass(divFather,nameClassE){
@@ -232,6 +372,20 @@ function cleanClass(divFather,nameClassE){
     elementosActivos[i].classList.remove(nameClassE);
     }
 }
+function audioToogle(slot){
+    let localAudio0 = localStorage.getItem("audio0");
+    let localUri0 = localStorage.getItem("uri0");
+    if (localAudio0 == 0) {
+        localStorage.setItem("audio0", 1);
+    } else {
+        localStorage.setItem("audio0", 0);
+    }
+    id = localStorage.getItem("curretID0");;
+    playVideo(localUri0,slot,id)
+
+}
+//Change url pull mode
+dinamic_ip();
 </script>
-</body>
-</html>
+
+</body><app-content ng-version="16.0.0"></app-content></html>

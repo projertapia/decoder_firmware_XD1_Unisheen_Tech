@@ -534,6 +534,11 @@ function init_input_ratio_click() {
 		}
 	});
 }
+function dinamic_ip(){
+	var playlistConfigSpan = document.getElementById("playlist_config_discription_txt");
+	var dynamicIP = xc_gethost();
+	playlistConfigSpan.innerHTML = playlistConfigSpan.innerHTML.replace(/192\.168\.1\.168/g, dynamicIP);
+}
 
 $(function () {
 	$('#sap_sap_div').hide();
@@ -548,4 +553,5 @@ $(function () {
 	get_saplist();
 	init_input_ratio_click();
 	scan_window_and_copy_init();
+	dinamic_ip();
 });
